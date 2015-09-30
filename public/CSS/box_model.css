@@ -1,0 +1,70 @@
+a:link {
+    color:red;
+}
+
+a:visited {
+    color:black;
+}
+
+a:hover {
+    color:blue;
+}
+
+a:active {
+    color:green;
+}
+
+.container {
+	width: 400px;
+
+}
+
+.wavelength {
+	border: 1px solid black;
+	width: 50px;
+	height: 50px;
+	padding: 11px;
+	color: white;
+	font-weight: bold;
+	float: left;
+	margin: 22px 50px 22px 0px;
+}
+
+#red {
+	background-color: red;
+
+}
+
+#orange {
+	background-color: orange;
+}
+	
+#yellow {
+	background-color: yellow;
+}
+
+#green {
+	background-color: green;
+}
+
+#blue {
+	background-color: blue;
+}
+
+#purple {
+	background-color: purple;
+}
+
+img {
+		position: relative;
+		bottom: 102.5px;
+		left: 40px;
+}
+
+
+
+
+
+
+
+

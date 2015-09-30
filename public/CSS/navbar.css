@@ -1,0 +1,50 @@
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav li {
+	display: inline;
+}
+
+nav a:link {
+    text-decoration:none;
+   	color: green;
+}
+
+nav a:visited {
+    color:yellow;
+}
+
+nav a:hover {
+    background-color:green;
+}
+
+nav a:active {
+    color:green;
+}
+
+nav li {
+	float: left;
+	background-image: url(/img/dark_embroidery.png);
+	border-radius: 20px;
+}
+
+nav a {
+	width: 90px;
+	display: block;
+	border: 1px solid black;
+	border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+

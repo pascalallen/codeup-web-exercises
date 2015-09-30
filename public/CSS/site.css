@@ -1,0 +1,59 @@
+h1 {
+    color: #82F1B5;
+    text-decoration: underline;
+}
+
+body { 
+	background-image: 
+	url(/img/paisley.png); 
+}
+
+body { 
+	background-repeat: 
+	repeat; 
+}
+
+ul { 
+	list-style: 
+	square; 
+}
+
+body { 
+	font-family: 
+	'Monsieur La Doulaise', cursive; 
+}
+
+table { 
+	background-image: 
+	url(/img/tinytable.jpg); 
+	background-size: 20px;
+}
+
+table { 
+	background-repeat: 
+	repeat; 
+}
+
+th {
+	color: red;
+}
+
+tr {
+	color:blue;
+}
+
+a:link {
+    color:red;
+}
+
+a:visited {
+    color:black;
+}
+
+a:hover {
+    color:blue;
+}
+
+a:active {
+    color:green;
+}

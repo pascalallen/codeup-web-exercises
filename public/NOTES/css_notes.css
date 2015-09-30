@@ -1,0 +1,209 @@
+/* CSS NOTES */
+
+/* Element Selector */
+h1 {
+    color: blue;
+}
+
+/* ID Selecetor */
+#main-header {
+    color: blue;
+    max-width: 500px;
+}
+
+/* Class Selector(stylesheet side) */
+.fancy-header {
+    color: blue;
+}
+.extra-large {
+    font-size: 200px;
+}
+
+/* Class Selector(html side) */
+<h1 class="fancy-header extra-large">Header Text</h1>
+
+/* Descendent Selector */
+#container h1 {
+    color: blue;
+}
+
+/* Direct-child Selector */
+#container>h1 {
+    color: blue;
+}
+
+/* Combining Selectors */
+h1.fancy-header {
+    color: blue;
+}
+h2.fancy-header {
+    color: green;
+}
+
+and 
+
+h1#main-header {
+    color: blue;
+}/* with id selector(#main-header) */
+
+/* Pseudo Classes */
+/* unvisited link (:link) */
+a:link {
+    color:red;
+}
+
+/* visited link (:visited) */
+a:visited {
+    color:black;
+}
+
+/* mouse hover over link (:hover) */
+a:hover {
+    color:blue;
+}
+
+/* active/selected link (:active) */
+a:active {
+    color:green;
+}
+
+/* Text Properties */
+
+/* Text Color */
+/* make element text color red */
+element { color: #F00; }
+
+/* Text Decoration */
+element { text-decoration: underline; }
+
+/* Text Align */
+element { text-align: center; }
+
+/*Text Indent */
+element { text-indent: 40px; }
+
+/* Font Properties */
+
+/* Font Family */
+element { font-family: Helvetica, Arial, Sans-Serif; }
+element { font-family: "Times New Roman", Times, Serif; }
+element { font-family: "Courier New", Monospace; }
+
+/* Font Style */
+element { font-style: italic; }
+
+/* Font Size */
+element { font-size: 12px; }
+element { font-size: 1em; }
+
+/* Font Weight */
+element { font-weight: bold; }
+
+/* Background Properties */
+
+/* Background Color */
+element { background-color: #F00; }
+
+/* Background Image */
+element { background-image: url(http://www.example.com/images/bck.png); }
+
+/* Background Repeat */
+element { background-repeat: repeat-x; }
+
+/* List Properties */
+
+/* List Style */
+ol { list-style: upper-alpha; }
+ul { list-style: square; }
+
+/* Inheriting Style */
+/* make second-level headers green */
+h2 { color: green; }
+
+/* ...but leave those in the sidebar alone so they use their parent's color */
+#sidebar h2 { color: inherit; }
+
+/* Padding */
+/* padding is always clockwise */
+p {
+    padding-top: 25px;
+    padding-right: 50px;
+    padding-bottom: 25px;
+    padding-left: 50px;
+}
+
+p {
+    padding: 25px 50px;
+}/* shorthand padding */
+
+/* Content Area Width and Height */
+
+/* Width */
+element { width: 200px; }
+
+/* Height */
+element { height: 200px; }
+
+
+
+/*NAVBAR*/
+/*begin with ul*/
+<nav>
+    <ul>
+        <li><a href="navbar.html">Home</a></li>
+        <li><a href="my_first_form.php">Forms</a></li>
+        <li><a href="css_positioning.html">Spectrum</a></li>
+        <li><a href="hello_world.html">Hello World</a></li>
+    </ul>
+</nav>
+/*then remove bullets*/
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+/*make inline*/
+nav li {
+    display: inline;
+}
+/*then make pseudo class selector for links*/
+nav a:link {
+    text-decoration:none;
+}
+
+nav a:visited {
+    color:black;
+}
+
+nav a:hover {
+    color:blue;
+}
+
+nav a:active {
+    color:green;
+}
+/*float*/
+nav li {
+    float: left;
+    background-image: url(/img/dark_embroidery.png);
+    border-radius: 20px;
+}
+/*create background and border on navbar*/
+nav a {
+    width: 90px;
+    display: block;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
