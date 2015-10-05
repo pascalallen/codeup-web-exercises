@@ -5,8 +5,14 @@
 </head>
 <body>
 	<script>
-		for (var i = 100; i >= 5; i -= 5) {
-   			console.log(i);
+		var i = 99;
+		while (i > 1) {
+			console.log(i + " bottles of beer on the wall, " + i + " bottles of beer.");
+			i--;
+			console.log("Take one down pass it around. " + i + " bottles of beer on the wall.");
+		}
+		if (i == 1) {
+			console.log(i + " bottle of beer on the wall, " + i + " bottle of beer. Take on down pass it around. No more bottles of beer on the wall. No more bottles of beer on the wall, no more bottles of beer. Go to the store and buy some more, 99 bottles of beer on the wall.")
 		}
 	</script>
 
