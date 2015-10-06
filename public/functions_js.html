@@ -34,7 +34,7 @@
 
 	sayHello(myNameIs);
 
-	
+
 
 	var random = Math.floor((Math.random()*100)+1);
 
@@ -43,6 +43,42 @@
 	}
 
 	isOdd(random);
+
+
+	function areaRectangle (length, width) {
+		return length * width;
+	}
+	function areaTriangle (length, width) {
+		return length * width / 2;
+	}
+	function areaEqualTriangle (length) {
+		return Math.sqrt(3)/4 * Math.pow(4, 2);
+	}
+	function areaCircle (radius) {
+		return radius * radius * Math.PI;
+	}
+	function perimeterCircle (radius) {
+		return Math.PI * radius * 2;
+	}
+	function areaTrapezoid (top, bottom, height) {
+	 	return top * bottom / 2 * height;
+	}
+	function areaDavid (areaEqualTriangle) {
+		return areaEqualTriangle * 12;
+	}
+
+	console.log(areaRectangle(15, 8));
+	console.log(areaTriangle(9, 8));
+	console.log(areaEqualTriangle(3));
+	console.log(areaCircle(4));
+	console.log(perimeterCircle(4));
+	console.log(areaTrapezoid(15, 6, 8));
+	console.log(areaDavid(6.93));
+
+
+
+
+
 
 
 
