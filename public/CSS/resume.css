@@ -1,12 +1,17 @@
+
+
 .jumbotron {
-    background-image: url("/clay_img/swirl_pattern.png");
+    background: url("/clay_img/swirl_pattern.png");
+    
 }
+
+.jumbotron-overlay { 
+	background-color: rgba(170, 255, 207, 0.4); 
+	opacity: 0.75;
+}
+
+
 
 .name {
     text-align: center;
-}
-
-.overlay {
-    background-color: #AAFFCD;
-    opacity: 100%;
 }

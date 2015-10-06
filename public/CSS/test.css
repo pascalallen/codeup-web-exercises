@@ -1,0 +1,23 @@
+.jumbotron {
+	background-image: url("/clay_img/grass_texture.png");
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+
+.jumbotron-overlay {
+	background-color: rgba(44, 176, 55, 0.3);
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+}
+
+.title {
+	text-align: center;
+	top: 25%;
+	left: 29.75%;
+	position: absolute;
+	font-size: 60;
+	text-shadow: 10px 10px 15px #2CB037;
+}
