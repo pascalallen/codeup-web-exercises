@@ -274,6 +274,25 @@ var response = prompt('What is your name?');
     }
 
 
+// SELF INVOKING FUNCTION(PROTECTED)
+// (DEFINES AND CALLS A FUNCTION IN ONE STEP)
+// CAN PROTECT YOUR SCRIPT(ONLY PROTECTS YOUR SCRIPT)
+(function(){
+ // do {
+    // 
+ // } while();
+})();
+
+
+
+
+
+
+
+
+
+
+
 
 
 

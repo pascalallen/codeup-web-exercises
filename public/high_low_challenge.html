@@ -7,6 +7,10 @@
 	<script>
 	"use strict";
 
+	var responseAgain = 'yes';
+	
+	do {
+
 	var random = Math.floor((Math.random()*15)+1);
 
 	var response = prompt('Guess a number between 1 and 15:');
@@ -22,12 +26,17 @@
 		}
 
 		if (response == random) {
-			alert('Lucky guess!');
+			alert('Lucky guess! You win!');
 		} else {
 			alert('You lose!');
 		}
 
+		var responseAgain = confirm('Would you like to play again?');
+		
+		} while (responseAgain);
 
+
+		
 	</script>
 
 </body>

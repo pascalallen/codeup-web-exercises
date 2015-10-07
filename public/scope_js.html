@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<title>SCOPE JS</title>
+</head>
+<body>
+	<script>
+
+	 // todo: Fill in your name here.
+
+	// todo:
+	// Create a function called 'sayHello' that takes a parameter 'fName'.
+	// When called, the function should log a message that says hello from the passed in name.
+
+	// todo: Call the function 'sayHello' passing the variable 'myNameIs' as a parameter.
+
+	
+	
+
+	// todo:
+	// Create a function called 'isOdd' that takes a number as a parameter.
+	// The function should use the ternary operator to log a message.
+	// The log should tell the number passed in and whether it is odd or not.
+
+	// todo: Call the function 'isOdd' passing the variable 'random' as a parameter.
+
+	(function(){
+
+		var myNameIs = 'Pascal';
+
+		function sayHello(fName) {
+			console.log('Hello ' + fName);
+		}
+
+		sayHello(myNameIs);
+
+
+
+		var random = Math.floor((Math.random()*100)+1);
+
+		function isOdd(random) {
+			(random % 2 != 0) ? console.log('Even number') : console.log('Odd number');
+		}
+
+		isOdd(random);
+
+
+		function areaRectangle (length, width) {
+			return length * width;
+		}
+		function areaTriangle (length, width) {
+			return length * width / 2;
+		}
+		function areaEqualTriangle (length) {
+			return Math.sqrt(3)/4 * Math.pow(4, 2);
+		}
+		function areaCircle (radius) {
+			return radius * radius * Math.PI;
+		}
+		function perimeterCircle (radius) {
+			return Math.PI * radius * 2;
+		}
+		function areaTrapezoid (top, bottom, height) {
+		 	return top * bottom / 2 * height;
+		}
+		function areaDavid (areaEqualTriangle) {
+			return areaEqualTriangle * 12;
+		}
+
+		console.log(areaRectangle(15, 8));
+		console.log(areaTriangle(9, 8));
+		console.log(areaEqualTriangle(3));
+		console.log(areaCircle(4));
+		console.log(perimeterCircle(4));
+		console.log(areaTrapezoid(15, 6, 8));
+		console.log(areaDavid(6.93));
+
+	})();
+
+
+
+
+</script>
+
+</body>
+</html>
