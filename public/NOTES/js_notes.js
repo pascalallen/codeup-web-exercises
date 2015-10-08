@@ -469,6 +469,22 @@ removeChild()
 appendChild()
 replaceChild()
 
+// REGISTER AN EVENT LISTENER IN DOM 
+var listener = function (event) {
+             alert('You clicked the button!');
+             };
+// ADD EVENT LISTENER TO btn1
+var btn1 = document.getElementById('btn1');
+document.getElementById('btn1').addEventListener('click', listener, false);
+
+var remover = function (event) {
+            // remove event listener from btn1
+            btn1.removeEventListener('click', listener, false);
+            console.log('Event listener removed.');
+            }
+// ADD EVENT LISTENER TO btn2
+var btn2 = document.getElementById('btn2');
+btn2.addEventListener('click', remover, false);
 
 
 
