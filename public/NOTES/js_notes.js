@@ -285,8 +285,14 @@ var response = prompt('What is your name?');
 
 
 // ARRAYS
-// couting arrays
-''.length
+''.length // couting arrays
+''.splice(1, 2) // '1' is index in array and '2' is how many
+''.pop() // takes from end
+''.shift() // takes from beginning
+''.splice(colors.indexOf('') +1, 0, '', '') //placing with splice
+''.reverse() // reverses the array
+''.sort() // alphabatize
+
 
 // array example
 var names = ['Ringo', 'Paul', 'George', 'John'];
@@ -314,6 +320,160 @@ names.forEach(function (element, index, array) {
     console.log('The name at index ' + index + ' is ' element);
 
 });
+
+// MATH
+Math.random(); Math.floor(Math.random() * (max - min + 1) + min);
+Math.round(); Math.round(20.49);  // 20
+Math.floor(); Math.floor( 45.95); //  45
+Math.ceil(); Math.ceil(.95);   // 1
+Math.pow(); Math.pow(2, 16); // 65536 (2^16)
+Math.sqrt(); Math.sqrt(9);  // 3
+Math.E; 
+Math.PI;
+
+
+// LOCATING AND RETRIEVING HTML ELEMENTS IN DOM
+document.getElementById();
+<button id="btnToClick">Click Me</button>
+<script>
+    "use strict";
+    (function() {
+        var btnToClick = document.getElementById('btnToClick');
+        console.log(btnToClick);
+    })();
+</script>
+
+document.getElementsByClassName();
+// AND
+document.getElementsByTagName();
+<h1>List One</h1>
+<ul>
+    <li class="odd list-one-item">List 1, Item 1</li>
+    <li class="even list-one-item">List 1, Item 2</li>
+</ul>
+<h1>List Two</h1>
+<ul>
+    <li class="odd list-two-item">List 2, Item 1</li>
+    <li class="even list-two-item">List 2, Item 2</li>
+</ul>
+<script>
+    "use strict";
+    (function() {
+        var evenElements = document.getElementsByClassName('even');
+        console.log(evenElements[0]);
+        for (var i = 0; i < evenElements.length; i++) {
+            console.log(evenElements[i]);
+        }
+        var listItems = document.getElementsByTagName('li');
+        console.log(listItems[0]);
+        for (var i = 0; i < listItems.length; i++) {
+            console.log(listItems[i]);
+        }
+    })();
+</script>
+
+// DIRECT ACCESS TO FORM INPUTS (DOM)
+<form name="login">
+    <div>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text">
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password">
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+<script>
+    "use strict";
+    (function() {
+        var usernameInput = document.forms.login.username;t
+        console.log(usernameInput.value);
+    })();
+</script>
+
+// ACCESSING OR MODIFYING INNER HTML AND TEXT
+<h1 id="main-heading">Hello World!</h1>
+<div id="main-section">
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+</div>
+<script>
+    "use strict";
+    (function() {
+        // Get the main heading h1 by id
+        var mainHeading = document.getElementById('main-heading');
+        console.log(mainHeading.innerHTML); // Prints Hello World!
+        // Assign a new value to the inner HTML of the main heading
+        mainHeading.innerHTML = "Hello Codeup!";
+        console.log(mainHeading.innerHTML); // Prints Hello Codeup!
+        // Get the main section div by id
+        var mainSection = document.getElementById('main-section');
+        console.log(mainSection.innerHTML);
+        // Prints
+        // <p>Paragraph 1</p>
+        // <p>Paragraph 2</p>
+    })();
+</script>
+
+// ACCESSING OR MODIFYING ATTRIBUTES
+<a href="http://www.yahoo.com" id="search-link">Web Search</a>
+<script>
+    "use strict";
+    (function() {
+        // Get the search link anchor by id
+        var searchLink = document.getElementById("search-link");
+        // Does an element have an attribute?
+        console.log(searchLink.hasAttribute("href")); // Prints true
+        console.log(searchLink.hasAttribute("class")); // Prints false
+        // Get an attribute value
+        console.log(searchLink.getAttribute("href")); // Prints "http://www.yahoo.com"
+        // Add or modify an attribute
+        searchLink.setAttribute("class", "btn btn-default");
+        // Adds the attribute class and sets it to "btn btn-default"
+        searchLink.setAttribute("href", "http://google.com");
+        // Changes the href attribute to "http://google.com"
+        // Remove an attribute
+        searchLink.removeAttribute("class"); // Remove the class attribute
+    })();
+</script>
+
+// ACCESSING OR MODIFYING STYLES
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sample Page</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        (function() {
+            // Get the body element (notice we need to use index 0 of the array!)
+            var bodyElement = document.getElementsByTagName('body')[0];
+            // Change the body font color
+            bodyElement.style.color = '#444'; // Dark grey
+            bodyElement.style['background-color'] = "#fefefe"; // Very light grey
+            // We had to use [] syntax since the property name has a dash
+            bodyElement.style.fontFamily = "Helvetica, Verdana, Sans-Serif";
+            // Replace dashes with camelCaps to use standard . syntax
+        })();
+    </script>
+</body>
+</html>
+
+// ADDING AND REMOVING ELEMENTS
+createElement()
+removeChild()
+appendChild()
+replaceChild()
+
+
+
+
+
+
 
 
 
