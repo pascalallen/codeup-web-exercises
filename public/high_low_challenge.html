@@ -33,7 +33,83 @@
 
 		var responseAgain = confirm('Would you like to play again?');
 		
-		} while (responseAgain);
+	} while (responseAgain);
+
+
+
+
+		// #############################################
+
+
+
+		// WITH FUNCTIONS
+
+		function getRandomNumber() {
+			var rand = Math.floor((Math.random() * 50) + 1);
+			return rand;
+		}
+
+		function playAgain() {
+			var answer = confirm('Do you want to play again?');
+			return answer;
+		}
+
+		function getGuess() {
+			var guess = prompt('Please enter your guess between 1 and 50');
+			return guess;
+		}
+
+		function isValidGuess(guess) {
+			// if prompt value is empty or cancel
+			var parsedGuess = parseInt(guess);
+			// if parsedGuess is not a number then return false
+			if (isNaN(parsedGuess)) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		function getValidGuess() {
+
+			do {
+
+				var guess = getGuess();
+
+			} while (isValidGuess(guess) == false);
+
+			return guess;
+
+		}
+
+
+	function playGame () {
+
+		var guess = getValidGuess();
+		var random = getRandomNumber();
+
+		do {
+
+			if (guess == random) {
+			console.log('You did it!');
+			var answer = playAgain();
+			} else if (guess > random) {
+				console.log('Too high!');
+			} else if (guess < random) {
+				console.log('Too low');
+			}
+
+		} while (random != guess);
+
+	}
+
+	playGame();
+
+	var replay = playAgain();
+
+	if (replay) {
+		playGame();
+	}
 
 
 		

@@ -284,10 +284,36 @@ var response = prompt('What is your name?');
 })();
 
 
+// ARRAYS
+// couting arrays
+''.length
 
+// array example
+var names = ['Ringo', 'Paul', 'George', 'John'];
+// to console.log array
+console.log(names);
+// using a for loop and function to log all names
+for(var i = 0; i < names.length; i++) {
+    sayHello(names[i]);
+}
+function sayHi(name) {
+    return 'Hello, ' + name;
+}
+// iterating a for-each loop in an ARRAY
+// declare and initialize array
+var shapes = ['square', 'rectangle', 'circle', 'triangle'];
+// loop through the array and log the values
+shapes.forEach(function (element, index, array) {
+    // element is the shape name
+    // index is the iterator
+    // array is the shapes array itself
+    console.log('The shape at index ' + index + ' is: ' + element);
+});
+// example of for-each loop iteration
+names.forEach(function (element, index, array) {
+    console.log('The name at index ' + index + ' is ' element);
 
-
-
+});
 
 
 
