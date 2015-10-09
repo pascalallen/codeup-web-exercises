@@ -9,14 +9,13 @@
     <button id="defuser">Defuse the BOM</button>
 
     <script>
+
         var detonationTimer = 5;
 
-
-        // TODO: This function needs to be called once every second
         var interval = 1000;
+
         var countdown = setInterval(function(){
             updateTimer();
-
         }, interval);
 
         function updateTimer()
@@ -31,21 +30,14 @@
             detonationTimer--;
         }
 
-        // TODO: When this function runs, it needs to
-        // cancel the interval/timeout for updateTimer()
         function defuseTheBOM()
         {
             clearInterval(countdown);
-
         }
 
-        // Don't modify anything below this line!
-        //
-        // This causes the defuseTheBOM() function to be called
-        // when the "defuser" button is clicked.
-        // We will learn about events in the DOM lessons
         var defuser = document.getElementById('defuser');
         defuser.addEventListener('click', defuseTheBOM, false);
+        
     </script>
 </body>
 </html>

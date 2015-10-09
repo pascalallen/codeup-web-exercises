@@ -35,56 +35,72 @@
     <script>
         "use strict";
 
-        var listener = function (mainHeader) {
-            mainHeader.innerHTML = 'JavaScript is Cool';
-            
-        }
-        var mainHeader = document.getElementById('btn1');
-        btn1.addEventListener('click', listener, true);
-        mainHeader.innerHTML = 'JavaScript is Cool';
-
-
-
-
-
         (function() {
-            // TODO: Uncomment next line and get the main header element by id
-            
+
+            var listener1 = function () {
+                mainHeader.innerHTML = 'JavaScript is Cool';
+            }
+
+            var listener2 = function() {
+                subHeader.style.color = '#999';
+            }
+
+            var listener3 = function() {
+                 for (var i = 0; i < listItems.length; i++) {
+                console.log(listItems[i]);
+                    if (i % 2 == 0) {
+                        listItems[i].style.color = '#999';
+                    }
+                };
+            }
+
+            var listener4 = function() {
+                subParagraphs[0].innerHTML = 'Mission Accomplished!';
+            }
+
+            var remover = function () {
+                btn1.removeEventListener('click', listener1, false);
+            }
+
+            var btn1 = document.getElementById('btn1');
+                document.getElementById('btn1').addEventListener('click', listener1, false);
+
+            var btn2 = document.getElementById('btn2');
+                document.getElementById('btn2').addEventListener('click', listener2, false);
+
+            var btn3 = document.getElementById('btn3');
+                document.getElementById('btn3').addEventListener('click', listener3, false);
+
+            var btn4 = document.getElementById('btn4');
+                document.getElementById('btn4').addEventListener('click', listener4, false);
+
             var mainHeader = document.getElementById('main-header');
-            console.log(mainHeader);
-            
+                console.log(mainHeader);
 
-            // TODO: Set inner html of mainHeader to "JavaScript is Cool"
-            mainHeader.innerHTML = 'JavaScript is Cool';
-
-            // TODO: Uncomment the next line and get the sub header element by id
             var subHeader = document.getElementById('sub-header');
-            console.log(subHeader);
+                console.log(subHeader);
 
+            var listItems = document.getElementsByTagName('li');
+
+            var subParagraphs = document.getElementsByClassName('sub-paragraph');
+                console.log(subParagraphs);
+
+            // TODO: Uncomment next line and get the main header element by id
+            // TODO: Set inner html of mainHeader to "JavaScript is Cool"
+            // mainHeader.innerHTML = 'JavaScript is Cool';
+            // TODO: Uncomment the next line and get the sub header element by id
             // TODO: Set the text color of subHeader to blue
-            subHeader.style.color = '#999';
-
+            // subHeader.style.color = '#999';
             // TODO: Uncomment the next line and get all list items
             // TODO: Set text color on every other list item to grey
-            var listItems = document.getElementsByTagName('li');
-            for (var i = 0; i < listItems.length; i++) {
-            console.log(listItems[i]);
-                if (i % 2 == 0) {
-                    listItems[i].style.color = '#999';
-                }
-            };
-
             // TODO: Set text color of li with dbid = 1 to blue
-            listItems[0].style.color = 'rgb(0, 0, 255'
-
             // TODO: Uncomment the next line and get all elements with class name sub-paragraph
-            var subParagraphs = document.getElementsByClassName('sub-paragraph');
-            console.log(subParagraphs);
-
             // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
-            subParagraphs[0].innerHTML = 'Mission Accomplished!';
 
         })();
+
+
     </script>
+    
 </body>
 </html>
