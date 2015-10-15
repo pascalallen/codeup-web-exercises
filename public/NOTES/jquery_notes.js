@@ -36,3 +36,56 @@ $('h1, p, li').css('background-color', '#FFFF00');
 
 // ALL SELECTOR EXAMPLE:
 $('*').css('border', '1px solid #F00');
+
+// MOUSE EVENTS
+// CLICK EVENT HANDLER EXAMPLE:
+$('#codeup').click(function() {
+                alert('h1 with id "codeup" was clicked');
+            });
+
+// DOUBLE CLICK EVENT HANDLER EXAMPLE:
+$('#codeup').dblclick(function() {
+                alert('h1 with id "codeup" was double clicked');
+            });
+
+// HOVER EVENT HANDLER EXAMPLE:
+$( selector ).hover( handlerIn, handlerOut )
+// ALSO
+$('#codeup').hover(
+        function() {
+            $(this).css('background-color', '#FF0');
+        },
+        function() {
+            $(this).css('background-color', '#FFF');
+        }
+    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
