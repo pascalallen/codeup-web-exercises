@@ -60,7 +60,19 @@ $('#codeup').hover(
         }
     );
 
+// KEYBOARD EVENTS
+// KEY DOWN EXAMPLE:
+$('#textfield').keydown(function() {
+                alert('.keydown() event fired');
+});
 
+// KEY UP EXAMPLE:
+$('#textfield').keyup(function() {
+                alert('.keydown() event fired');
+});
+
+// ON EXAMPLE:
+.on('keydown', function() {});
 
 
 

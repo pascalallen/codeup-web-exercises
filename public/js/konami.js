@@ -7,8 +7,9 @@ $(document).keyup(function(event){
     code.push(event.keyCode);
     console.log(code);
     if (code == answer) {
-    	$('body').css('background-image', 'url(/img/metalgear.jpg').css('background-repeat', 'no-repeat');
+    	$('body').css('background-image', 'url(/img/contra.gif').css('background-size', '100%');
     	alert('You have added 30 lives!');
     	$('#contra').get(0).play();
+
     }
 });
