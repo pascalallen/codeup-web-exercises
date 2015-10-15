@@ -13,3 +13,26 @@ $(document).ready(function() {
             alert(contents);
 });
 
+// CSS METHOD IN JQUERY
+$(_selected_element_).css(propertyName, value);
+// ANOTHER EXAMPLE:
+$(document).ready(function() {
+    $('.important').css('background-color', '#FF0');
+});
+
+// PUT CODE INSIDE OF THIS:
+$(document).ready(function() {
+"use strict";
+	// CODE HERE
+	// CODE HERE
+	// CODE HERE
+});
+
+// ELEMENT SELECTOR EXAMPLE:
+$('p').css('font-size', '32px');
+
+// MULTIPLE ELEMENT SELECTOR EXAMPLE:
+$('h1, p, li').css('background-color', '#FFFF00');
+
+// ALL SELECTOR EXAMPLE:
+$('*').css('border', '1px solid #F00');
