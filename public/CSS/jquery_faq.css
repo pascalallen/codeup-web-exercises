@@ -1,7 +1,8 @@
 .invisible {
-	display: none;
+	color: #fff;
+	
 }
 
 .visible {
-	display: inherit;
+	color: #000;
 }
