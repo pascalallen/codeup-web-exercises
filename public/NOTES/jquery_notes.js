@@ -135,8 +135,21 @@ $(document).ready(function() {
     $('#national-parks').children().css('font-weight', 'bold');
 });
 
+// BASIC EFFECTS
+// .hide()
+$('#national-parks-toggle').click(function() {
+    $('#national-parks').hide();
+});
 
+// .show()
+ $('#national-parks-toggle').click(function() {
+    $('#national-parks').show();
+});
 
+// .toggle()
+ $('#state-parks-texas-toggle').click(function() {
+    $('#state-parks-texas').toggle();
+});
 
 
 

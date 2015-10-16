@@ -9,8 +9,13 @@ $(document).ready(function() {
 	$('ul').each(function(){
 		$(this).children('li').first().css('font-weight', 'bold');
 	});
-	$('li').click(function(event) {
-        event.preventDefault();
-        $(this).parent().toggleClass('invisible');
+	$('#toggle1').click(function() {
+        $('#1').toggle();
+    });
+    $('#toggle2').click(function() {
+        $('#2').toggle();
+    });
+    $('#toggle3').click(function() {
+        $('#3').toggle();
     });
 });
