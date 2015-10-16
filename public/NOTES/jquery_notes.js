@@ -75,6 +75,65 @@ $('#textfield').keyup(function() {
 .on('keydown', function() {});
 
 
+// ATTRIBUTE METHODS
+// .html()
+$('#codeup').click(function() {
+    var h1 = $(this).html();
+    alert(h1);
+});
+
+// .addClass()
+$(document).ready(function() {
+    $('#highlight-important').click(function(event) {
+        event.preventDefault();
+        $('.important').addClass('highlighted');
+    });
+});
+
+// .removeClass()
+$(document).ready(function() {
+    $('#highlight-important').click(function(event) {
+        event.preventDefault();
+        $('.important').removeClass('highlighted');
+    });
+});
+
+// .toggleClass()
+$(document).ready(function() {
+    $('#highlight-important').click(function(event) {
+        event.preventDefault();
+        $('.important').toggleClass('highlighted');
+    });
+});
+
+// .text()
+// .css()
+
+
+// TRAVERSING METHODS
+// .each()
+$('li').each(function(index) {
+    if (index % 2 !== 0) {
+        $(this).css('background-color', '#FF0');
+    }
+});
+
+// .first()
+$('li').first().css('background-color', '#FF0');
+
+// .last()
+$('li').last().css('background-color', '#FF0');
+
+// .parent()
+$(document).ready(function() {
+    $('li').css('background-color', '#FF0');
+    $('li').parent().css('background-color', '#0F0');
+});
+
+// .children()
+$(document).ready(function() {
+    $('#national-parks').children().css('font-weight', 'bold');
+});
 
 
 
