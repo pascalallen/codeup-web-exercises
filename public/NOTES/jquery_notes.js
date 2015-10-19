@@ -257,13 +257,90 @@ $(document).ready(function() {
 });
 
 
+// AJAX REQUESTS
 
+// basic request('get' request by default)
+$.ajax("/some-url.json");
+// OPTIONS
+$.ajax("/some-script.php", {
+    type: "POST",
+    data: {
+        name:     "John",
+        location: "Boston"
+    }
+});
+// type
+Can be "GET", "POST", "PUT", or "DELETE". 
+The default is "GET".
+// data
+// dataType
+Common options are "json", "xml", "html", or "text".
+// url
+// username & password
 
+// GET, POST SHORTHAND
+$.post("/address/save", {
+    first_name: "George",
+    last_name:  "Weathers",
+    city:       "Denver",
+    state:      "CO"
+});
 
+$.get("/users", {
+    limit:  10,
+    offset: 20
+});
+// (is the same as:)
+$.ajax({
+    url: "/users",
+    type: "GET",
+    data: {
+        limit:  10,
+        offset: 20
+    }
+});
 
+// asynchronous callbacks
+// Send ajax request
+$.ajax("/some-url.php");
+// Handle data from ajax request
+doSomething(ajaxData);
 
+$.ajax("/some-url.php").done(function(data) {
+    alert("AJAX call completed successfully!");
+    console.log("Data returned from server:");
+    console.log(data);
+});
 
+// three callbacks
+.done()
+.fail()
+.always()
+// example with all 3:
+$.ajax("example.php").done(function() {
+    alert("Everything went great!");
+}).fail(function() {
+    alert("There was an error!");
+}).always(function() {
+    alert("And we're finished!");
+});
 
+// can also assgin to variables:
+// Assign to variable
+var jqxhr = $.ajax("example.php");
+
+// Attach callback functions individually
+jqxhr.done(function() {
+    alert("Everything went great!");
+});
+
+jqxhr.fail(function() {
+    alert("There was an error!");
+});
+
+jqxhr.always(function() {
+    alert("And we're done!");
+});
 
 
 
