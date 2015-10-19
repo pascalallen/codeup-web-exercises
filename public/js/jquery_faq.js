@@ -10,12 +10,12 @@ $(document).ready(function() {
 		$(this).children('li').first().css('font-weight', 'bold');
 	});
 	$('#toggle1').click(function() {
-        $('#1').toggle();
+        $('#1').slideToggle();
     });
     $('#toggle2').click(function() {
-        $('#2').toggle();
+        $('#2').slideToggle();
     });
     $('#toggle3').click(function() {
-        $('#3').toggle();
+        $('#3').slideToggle();
     });
 });

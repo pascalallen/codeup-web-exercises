@@ -152,8 +152,109 @@ $('#national-parks-toggle').click(function() {
 });
 
 
+// FADING EFFECTS
+// .fadeIn()
+$('#national-parks-toggle').click(function() {
+    $('#national-parks').fadeIn();
+});
+
+// .fadeOut()
+$('#state-parks-texas-toggle').click(function() {
+    $('#state-parks-texas').fadeOut();
+});
+
+//  .fadeToggle()
+$('#national-parks-toggle').click(function() {
+    $('#national-parks').fadeToggle();
+});
 
 
+// SLIDING EFFECTS
+// .slideUp()
+$('#national-parks-toggle').click(function() {
+    $('#national-parks').slideUp();
+});
+
+// .slideDown()
+$('#national-parks-toggle').click(function() {
+    $('#national-parks').slideDown();
+});
+
+// .slideToggle()
+$('#national-parks-toggle').click(function() {
+    $('#national-parks').slideToggle();
+});
+
+
+// ANIMATE
+// basic syntax
+$(selector).animate({
+    property1: "value1",
+    property2: "value2",
+    // ...
+}, time);
+// or
+$("#the-box").animate({
+    left: "30px",
+    top:  "50px"
+}, 500);
+
+// relative
+$("#the-box").animate({
+    left: "+=30px",
+    top:  "+=50px"
+}, 500);
+
+// alert callback
+$("#the-box").animate({
+    left: "+=30px",
+    top:  "+=50px"
+}, 500, function() {
+    alert("Animation complete!");
+});
+
+// stack
+$(selector).animate({
+    property: "value"
+}, duration1).animate({
+    property: "value"
+}, duration2).animate({
+    property: "value"
+}, duration3);
+
+// MORE EXAMPLES
+$(document).ready(function() {
+    $("#national-parks-toggle").click(function() {
+        $("#national-parks").animate({
+            height: "toggle",
+            opacity: "toggle"
+        }, 1000, function() {
+            alert("Animation complete!");
+        });
+    });
+    $("#state-parks-texas-toggle").click(function() {
+        $("#state-parks-texas").animate({
+            left: 100,
+            "font-size": "1.5em",
+            "border-width": "+=5px"
+        }, 500);
+    });
+});
+// AND
+$(document).ready(function() {
+    $("#image-title").click(function() {
+        $("#image").animate({
+            top: "+=50",
+            left: "+=200"
+        }, 1000).animate({
+            left: "+=50"
+        }, 500).animate({
+            top: "+=-50"
+        }, 1000).animate({
+            left: "-=250"
+        }, 500);
+    });
+});
 
 
 
