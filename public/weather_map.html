@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<title>Weather Map</title>
+	<!-- BOOTSTRAP -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<!-- CUSTOM FONT -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<!-- CUSTOM STYLING -->
+	<link href="css/weather_map.css" rel="stylesheet">
+</head>
+<body>
+	<h1>Weather Application</h1>
+	<h2 id="cityName">San Antonio</h2>
+	<div class="container-fluid">
+		<div id="insertMap" class="row"></div>
+	</div>
+	<br>
+	<form>
+	  <span>Latitude: </span><input type="text" id="lat">
+	  <span>Longitude: </span><input type="text" id="lon">
+	  <button type="button" id="button">Go!</button>
+	</form>
+	<br>
+	<div id="map-canvas"></div>
+	<!-- GOOGLE MAPS API -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDNUiHgyFcQO7Oe9Li4hzEwh_6hTAp3yM"></script>
+	<!-- MOMENT -->
+	<script src="/js/moment.js"></script>
+	<!-- JQUERY -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<!-- CUSTOM JAVASCRIPT -->
+	<script src="/js/weather_map.js"></script>
+</body>
+</html>
