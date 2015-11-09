@@ -135,22 +135,150 @@ $a-- Post-decrement Returns $a, then decrements $a by one.
 `$a && $b`	And	true if both `$a` and `$b` are true.
 `$a || $b`	Or	true if either `$a` or `$b` is true.
 
+// WHILE LOOP
+$test = 5;
+while ($test <= 15){
+	echo "$test" . PHP_EOL;
+	$test++;
+}
+
+// DO-WHILE LOOP
+$a = 1;
+do {
+    echo "\$a is equal to {$a}\n";
+    $a++;
+} while ($a <= 5);
 
 
+// I/O STREAMS
+// Write the output
+// Notice the space after the ?
+fwrite(STDOUT, 'What is your first name? ');
+// Get the input from user
+$firstName = trim(fgets(STDIN));
+// Output the user's name
+fwrite(STDOUT, "Hello $firstName\n");
 
+// PHP CLI arguments
+// COUNTER
+$argc;
+// VALUE
+$argv;
 
+// FOREACH
+$numbers = ['zero', 'one', 'two', 'three', 'four', 'five'];
+foreach ($numbers as $value) {
+    echo "\$number has a value of {$value}\n";
+}
 
+// FOREACH WITH KEYS
+$books = array(
+    'The Hobbit' => array(
+        'published' => 1937,
+        'author' => 'J. R. R. Tolkien',
+        'pages' => 310
+    ),
+    'Game of Thrones' => array(
+        'published' => 1996,
+        'author' => 'George R. R. Martin',
+        'pages' => 835
+    ),
+    'The Catcher in the Rye' => array(
+        'published' => 1951,
+        'author' => 'J. D. Salinger',
+        'pages' => 220
+    ),
+    'A Tale of Two Cities' => array(
+        'published' => 1859,
+        'author' => 'Charles Dickens',
+        'pages' => 544
+    )
+);
+foreach ($books as $title => $book) {
+	echo "Book's title is {$title}\n";
+    foreach ($book as $key => $value) {
+        echo "Book's $key is $value\n";
+    }
+}
 
+// BREAK AND CONTINUE IN PHP
+// break
+for ($i = 1; $i <= 100; $i++) {
+    echo $i . "\n";
+    if ($i == 5) {
+        break;
+    }
+}
+// continue
+for ($i = 1; $i <= 10; $i++) {
+    echo $i . "\n";
+    if ($i % 2 == 0) {
+        continue;
+    }
+    echo "^ that is an odd number.\n";
+}
+// nested loops using break
+$numbers = array(1, 2, 3, 4, 5);
+// Loop 1
+foreach ($numbers as $key => $value) {
+    echo "{$value}\n";
+    // Loop 2
+    for ($i = 1; $i <= 10; $i++) {
+        if ($i == 2) {
+            echo "{$i}\n";
+            break 2;
+        }
+    }
+}
+echo "done!\n";
 
+// SWITCH CASE IN PHP
+$value = 'Hello!';
 
+switch (gettype($value)) {
+    case 'integer':
+        echo '$value is an integer';
+        break;
+    case 'float':
+        echo '$value is a float';
+        break;
+    case 'boolean':
+        echo '$value is a boolean';
+        break;
+    case 'array':
+        echo '$value is an array';
+        break;
+    case 'null':
+        echo '$value is null';
+        break;
+    case 'string':
+        echo '$value is a string';
+        break;
+}
 
+// FUNCTION SYNTAX IN PHP
+function add($a, $b)
+{
+    return $a + $b;
+}
 
+// PHP manual's function reference page
+http://www.php.net/manual/en/funcref.php
 
+// PHP manual's variable functions page
+http://www.php.net/manual/en/ref.var.php
 
+// ARRAY SORTING FUNCTIONS
+asort() sorts by value. maintains key association. sorts low to high.
+arsort() sorts by value. maintains key association. sorts high to low.
+krsort() sorts by key. maintains key association. sorts high to low.
+ksort() sorts by key. maintains key association. sorts low to high.
+sort() sorts by value. sorts low to high.
+rsort() sorts by value. sorts high to low.
+shuffle( sorts by value. sorts at random.
 
-
-
-
-
-
-
+// SEARCHING THROUGH ARRAYS
+mixed array_search ( 
+    mixed $needle , 
+    array $haystack [, bool $strict = false ] 
+    )
