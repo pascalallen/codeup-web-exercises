@@ -1,14 +1,39 @@
 <?php
-$adjectives = ['Beautiful', 'Hideous', 'Prejudice', 'Worrysome', 'Charming', 'Stinky', 'Sad', 'Busy', 'Vibrant', 'Awesome', 'Psychoneuroendocrinological'];
-$nouns = ['Person', 'Seahorse', 'Monument', 'Devil', 'Jesus', 'Booty Call', 'Skeleton', 'Stinkbug', 'Face', 'Doll'];
-function random ($adjectives, $nouns)
+function pageController()
 {
+	$nouns = [
+		'Person', 
+		'Seahorse', 
+		'Monument', 
+		'Devil', 
+		'Jesus', 
+		'Booty Call', 
+		'Skeleton', 
+		'Stinkbug', 
+		'Face', 
+		'Doll'
+	];
+	$adjectives = [
+		'Beautiful', 
+		'Hideous', 
+		'Prejudice', 
+		'Worrysome', 
+		'Charming', 
+		'Stinky', 
+		'Sad', 
+		'Busy', 
+		'Vibrant', 
+		'Awesome', 
+		'Psychoneuroendocrinological'
+	];
 	$ranAdj = array_rand($adjectives);
 	$ranNou = array_rand($nouns);
 	$serverName = $adjectives[$ranAdj] . '-' . $nouns[$ranNou];
-	return $serverName;
+	return array(
+		'serverName' => $serverName
+	);
 };
-$serverName = random ($adjectives, $nouns);
+extract(pageController());
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +48,6 @@ $serverName = random ($adjectives, $nouns);
 	<link rel="stylesheet" type="text/css" href="css/server-name-generator.css">
 </head>
 <body>
-	<h1> <?= echo $serverName; ?> </h1>
-	
+	<h1> <?= $serverName; ?> </h1>
 </body>
 </html>

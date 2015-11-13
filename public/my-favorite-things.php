@@ -1,5 +1,19 @@
 <?php
-$favoriteThings = ['guitar', 'black metal', 'football', 'craft beer', 'traveling'];
+function pageController()
+{
+	$favoriteThings = [
+		'guitar', 
+		'black metal', 
+		'football', 
+		'craft beer', 
+		'traveling'
+	];
+
+	return array(
+		'favoriteThings' => $favoriteThings
+	);
+};
+extract(pageController());
 ?>
 <!DOCTYPE html>
 <html>
