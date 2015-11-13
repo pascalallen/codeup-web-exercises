@@ -1,0 +1,13 @@
+.ball {
+	width: 5.5%;
+	height: 10%;
+	background-color: black;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.btn {
+    margin-left: 25%;
+    position: fixed;
+}
