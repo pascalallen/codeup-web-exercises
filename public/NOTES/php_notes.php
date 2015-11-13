@@ -282,3 +282,48 @@ mixed array_search (
     mixed $needle , 
     array $haystack [, bool $strict = false ] 
     )
+
+// Pushing, Popping, and Shifting
+array_push() = Push one or more elements onto the end of array;
+array_pop() = Pop the element off the end of array;
+array_shift() = Shift an element off the beginning of array;
+array_unshift() = Prepend one or more elements to the beginning of an array;
+
+// Exploding and Imploding
+$physicistsArray = explode(', ', $physicistsString);
+$physicistsString = implode('|', $physicistsArray);
+
+// Using PHP to Read Files
+fopen() — Opens a file (or URL), returns a file pointer
+fread() — Reads a file to a specific length(bytes) using a file pointers
+filesize() — Returns the size of a given file in bytes.
+fclose() — Closes a handle to an open file pointer.
+
+// PHP WITH HTML
+<?php
+
+$favoriteFoods = ['Brownies', 'Pound Cake', 'Doughnuts'];
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Codeup!</title>
+</head>
+<body>
+    <h1>My Favorite Foods</h1>
+    <ol>
+    <?php foreach ($favoriteFoods as $favoriteFood) { ?>
+        <li><?php echo $favoriteFood; ?></li>
+    <?php } ?>
+    </ol>
+</body>
+</html>
+
+
+
+
+
+
+
+

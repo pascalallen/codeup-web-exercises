@@ -1,0 +1,13 @@
+.table {
+    width: 50%;
+    max-width: 25%;
+    text-align: center;
+	position: fixed;
+    vertical-align: middle;
+}
+
+.site-wrapper-inner {
+    margin-left: 36%;
+    top: 0;
+    bottom: 0;
+}
