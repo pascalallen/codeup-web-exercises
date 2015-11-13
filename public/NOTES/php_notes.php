@@ -320,8 +320,11 @@ $favoriteFoods = ['Brownies', 'Pound Cake', 'Doughnuts'];
 </body>
 </html>
 
-
-
+<!-- REQUEST AND QUERY STRINGS -->
+codeup.dev/hello_world.php?hello=pascal
+|                         |            |
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        REQUEST            QUERY STRING
 
 
 
