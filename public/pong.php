@@ -2,13 +2,13 @@
 function pageController()
 {
 	$counter = isset($_GET['counter']) ? $_GET['counter'] : 0;
-	$up = $counter+1;
-	$down = $counter-1;
+	$hit = $counter+1;
+	$miss = 'You lose!';
 
 	return array(
 		'counter' => $counter,
-		'up'	  => $up,
-		'down'	  => $down
+		'hit'	  => $hit,
+		'miss'	  => $miss
 	);
 
 }
@@ -17,12 +17,12 @@ extract(pageController());
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Counter</title>
+	<title>Pong</title>
 </head>
 <body>
 	<h2><?= $counter ?></h2>
-	<a href="counter.php?counter=<?= $up ?>">up</a>
+	<a href="ping.php?counter=<?= $hit ?>">HIT</a>
 	<br>
-	<a href="counter.php?counter=<?= $down ?>">down</a>
+	<a href="ping.php?counter=<?= $miss ?>">MISS</a>
 </body>
 </html>
