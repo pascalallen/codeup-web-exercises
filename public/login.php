@@ -8,7 +8,7 @@ function pageController()
 	if($name == "guest" && $password == "password"){
         header('Location:authorized.php');
         die();
-    }
+    };
 	return array(
 		'name' 	 => $name,
 		'password' => $password
