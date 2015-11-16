@@ -346,8 +346,8 @@ var_dump($_POST);
 </body>
 </html>
 
-
-
+<!-- NULL COALESCING -->
+isset($_POST['name']) ? $_POST['name'] : "";
 
 
 
