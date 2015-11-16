@@ -349,8 +349,12 @@ var_dump($_POST);
 <!-- NULL COALESCING -->
 isset($_POST['name']) ? $_POST['name'] : "";
 
+<!-- PROTECT AGAINST ATTACKS -->
+<?= strip_tags(htmlspecialchars($message)) ?>
 
-
-
+<!-- SANITIZE DATA BEFORE DISPLAYED -->
+htmlspecialchars() — Convert special characters to HTML entities
+htmlentities() — Convert all applicable characters to HTML entities
+strip_tags() — Strip HTML and PHP tags from a string
 
 

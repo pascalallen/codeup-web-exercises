@@ -2,8 +2,10 @@
 var_dump($_POST);
 function pageController()
 {
-	$name = isset($_POST['name']) ? $_POST['name'] : "";
-	$password = isset($_POST['password']) ? $_POST['password'] : "";
+	$name = isset($_POST['name']) ? strip_tags(htmlspecialchars($_POST['name'])) : "";
+	$password = isset($_POST['password']) ? strip_tags(htmlspecialchars($_POST['password'])) : "";
+
+	echo $name . " " . $password;
 
 	if($name == "guest" && $password == "password"){
         header('Location:authorized.php');
