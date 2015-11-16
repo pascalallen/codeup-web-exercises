@@ -24,7 +24,7 @@ extract(pageController());
 <body>
     <form method="POST">
         <label>Name</label>
-        <input type="text" name="name"><br>
+        <input value ="<?= $name ?>"type="text" name="name"><br>
         <label>Password</label>
         <input type="text" name="password"><br>
         <input type="submit">
