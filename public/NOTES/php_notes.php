@@ -420,6 +420,32 @@ function endSession()
 </body>
 </html>
 
+<!-- OBJECTS/CLASS IN PHP -->
+$person = new stdClass();
+
+$person->firstName = 'Johnny';
+$person->lastName  = 'Appleseed';
+$person->fruit     = array('Pink Lady', 'Gala', 'Fuji');
+<!-- SAME THING -->
+class Person
+{
+    public $firstName;
+    public $lastName;
+    public $fruit = array();
+}
+
+$john = new Person();
+
+$john->firstName = 'Johnny';
+$john->lastName  = 'Appleseed';
+$john->fruit     = array('Braeburn', 'Golden Delicious', 'Honeycrisp');
+
+
+
+
+
+
+
 
 
 

@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require_once 'functions.php';
 var_dump($_REQUEST);
 session_start();
 function pageController()

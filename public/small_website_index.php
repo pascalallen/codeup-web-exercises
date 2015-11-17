@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-<?php require "head.php"; ?>
+<?php include "head.php"; ?>
 <body>
-	<?php require "navbar.php"; ?>
+	<?php include "navbar.php"; ?>
 	<div class="site-wrapper">
 		<h1 class="header">Small Templated Website</h1>
 		<div></div>
 		<div></div>
 		<div></div>	
 	</div>
-	<?php require "footer.php"; ?>
+	<?php include "footer.php"; ?>
 	<!-- JQUERY -->
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<!-- CUSTOM JAVASCRIPT -->
