@@ -1,7 +1,9 @@
 <?php
+require 'functions.php';
+
 function pageController()
 {
-	$counter = isset($_GET['counter']) ? $_GET['counter'] : 0;
+	$counter = inputHas('counter') ? inputGet('counter') : 0;
 	$hit = $counter+1;
 	$miss = 'You lose!';
 
