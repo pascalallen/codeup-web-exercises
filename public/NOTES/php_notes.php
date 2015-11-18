@@ -419,13 +419,14 @@ function endSession()
     </form>
 </body>
 </html>
-
 <!-- OBJECTS/CLASS IN PHP -->
+<?php
 $person = new stdClass();
 
 $person->firstName = 'Johnny';
 $person->lastName  = 'Appleseed';
 $person->fruit     = array('Pink Lady', 'Gala', 'Fuji');
+
 <!-- SAME THING -->
 class Person
 {
@@ -440,8 +441,18 @@ $john->firstName = 'Johnny';
 $john->lastName  = 'Appleseed';
 $john->fruit     = array('Braeburn', 'Golden Delicious', 'Honeycrisp');
 
+<!-- CONSTRUCTOR -->
+class Person
+{
+    public $firstName;
+    public $lastName;
 
-
+    public function __construct($firstName, $lastName)
+    {
+        $this->firstName = $firstName;
+        $this->lastName  = $lastName;
+    }
+}
 
 
 
