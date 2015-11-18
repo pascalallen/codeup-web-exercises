@@ -1,5 +1,7 @@
 <?php
 require_once 'functions.php';
+require_once "../Auth.php";
+require_once "../Log.php";
 var_dump($_REQUEST);
 session_start();
 function pageController()
@@ -8,8 +10,9 @@ function pageController()
 	$name = inputHas('name') ? inputGet('name') : "";
 	$password = inputHas('password') ? inputGet('password') : "";
 	$javascript = '';
-	if($name == "guest" && $password == "password"){
-        $_SESSION['LOGGED_IN_USER'] = $name;
+    // if($name == "guest" && $password == "password"){
+	if(Auth::attempt($name, $password)){
+        // $_SESSION['LOGGED_IN_USER'] = $name;
         header('Location: authorized.php');
         die();
     }else if ($name != "" || $password != ""){

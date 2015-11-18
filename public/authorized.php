@@ -1,10 +1,12 @@
 <?php
+require_once "../Auth.php";
+require_once "../Log.php";
 session_start();
-    if(!isset($_SESSION['LOGGED_IN_USER'])) {
+    if(!Auth::check()) {
         header('Location: login.php');
         die();
     }
-    $name = $_SESSION['LOGGED_IN_USER'];
+    $name = Auth::user();
 ?>
 <!DOCTYPE html>
 <html>
