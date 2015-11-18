@@ -454,6 +454,40 @@ class Person
     }
 }
 
+// Static Methods and Properties
+class Person
+{
+    public $firstName;
+    public $lastName;
+
+    public static $population = 7241000000;
+    public static function getScientificName()
+    {
+        return 'Homo sapien';
+    }
+    public static function birth()
+    {
+        self::$population += 1;
+    }
+}
+// TO ACCESS STATIC PROPERTIES
+Person::$population;
+// TO ACCESS STATIC METHODS
+Person::getScientificName();
+// CANNOT ACCESS THROUGH INSTANTIATION!!!
+$john = new Person();
+$john->worldPopulation = 7241000000;
+// USE SELF TO GRAB STATIC PROPERTIES AND METHODS
+// (USE ONLY INSIDE OF METHODS)
+self::$population += 1;
+
+
+
+
+
+
+
+
 
 
 
