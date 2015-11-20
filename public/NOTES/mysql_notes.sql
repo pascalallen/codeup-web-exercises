@@ -188,7 +188,13 @@ SELECT 'I am output!' AS 'Info';
 -- CRUD: CREATE, READ, UPDATE, DESTROY
 -- STRUCTURED QUERYING LANGUAGE
 
-
+-- ***** ORDER TO RUN MYSQL ON VAGRANT SSH ***** --
+-- 1: RUN MIGRATION FILE
+mysql -u codeup -p -t < albums_migration.sql;
+-- 2: RUN SEEDER FILE
+mysql -u codeup -p -t < albums_seeder.sql;
+-- RUN FILE ITSELF
+mysql -u codeup -p -t < select_exercise.sql;
 
 
 
