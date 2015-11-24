@@ -196,9 +196,52 @@ mysql -u codeup -p -t < albums_seeder.sql;
 -- RUN FILE ITSELF
 mysql -u codeup -p -t < select_exercise.sql;
 
+-- UPDATE
+UPDATE table_name
+SET column1 = 'value1', column2 = 'value2', ...
+WHERE columnA = 'valueA';
+
+UPDATE quotes
+SET author_first_name = 'Samuel', author_last_name = 'Clemens'
+WHERE id = 4;
 
 
+select first_name
+from employees
+where first_name in ('Irena', 'Vidya', 'Maya');
 
+SELECT first_name, last_name
+FROM employees
+WHERE last_name LIKE 'E%';
+
+-- LIMIT RESULTS
+SELECT columns FROM table LIMIT count [OFFSET count];
+
+
+-- OFFSET IS WHERE TO START IN SEARCH RESULTS
+SELECT emp_no, first_name, last_name
+FROM employees
+WHERE first_name LIKE 'M%'
+LIMIT 25 OFFSET 50;
+
+-- ASSIGNING FUNCTIONS IN MYSQL
+-- NOW
+SELECT NOW() as time_now;
+-- CURDATE
+SELECT CURDATE() as date_now;
+-- CURTIME
+SELECT CURTIME() as time_now;
+-- UNIX_TIMESTAMP(), UNIX_TIMESTAMP(date)
+SELECT UNIX_TIMESTAMP() as timestamp_now;
+-- COUNT NUMBER OF PEOPLE THAT DONT HAVE 'A' IN THEIR NAME
+SELECT COUNT(first_name)
+FROM employees
+WHERE first_name NOT LIKE '%a%';
+-- COUNT NUMBER OF PEOPLE THAT DONT HAVE 'A' IN THEIR NAME
+-- (DOESNT COUNT DUPLICATES)
+SELECT COUNT(DISTINCT first_name)
+FROM employees
+WHERE first_name NOT LIKE '%a%';
 
 
 
