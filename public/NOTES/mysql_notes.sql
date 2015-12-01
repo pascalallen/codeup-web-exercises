@@ -260,9 +260,43 @@ WHERE emp_no IN (
 )
 LIMIT 10;
 
+-- Using PDO to Execute Queries
+-- // Get new instance of PDO object
+$dbc = new PDO('mysql:host=127.0.0.1;dbname=codeup_pdo_test_db', 'codeup', 'password');
+-- // Tell PDO to throw exceptions on error
+$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+-- // Create the query and assign to var
+$query = 'CREATE TABLE users (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    email VARCHAR(240) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+)';
+-- // Run query, if there are errors they will be thrown as PDOExceptions
+$dbc->exec($query);
 
+-- EXEC RETURNS NUMBER OF ROWS
+-- // Create INSERT query
+$query = "INSERT INTO users (email, name) VALUES ('ben@codeup.com', 'Ben Batschelet')";
 
+-- // Execute Query
+$numRows = $dbc->exec($query);
+echo "Inserted $numRows row." . PHP_EOL;
 
+-- LAST INSERT ID
+$users = [
+    ['email' => 'jason@codeup.com',   'name' => 'Jason Straughan'],
+    ['email' => 'chris@codeup.com',   'name' => 'Chris Turner'],
+    ['email' => 'michael@codeup.com', 'name' => 'Michael Girdley']
+];
+
+foreach ($users as $user) {
+    $query = "INSERT INTO users (email, name) VALUES ('{$user['email']}', '{$user['name']}')";
+
+    $dbc->exec($query);
+
+    echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
+}
 
 
 

@@ -7,3 +7,4 @@ define('DB_PASS', 'ihave555');
 require 'db_connect.php';
 
 echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
+
