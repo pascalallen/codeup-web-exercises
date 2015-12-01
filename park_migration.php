@@ -8,11 +8,11 @@ require 'db_connect.php';
 
 echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
 
-$drop = "DROP TABLE IF EXISTS national_parks";
+$drop_table = "DROP TABLE IF EXISTS national_parks";
 
-$dbc->exec($drop);
+$dbc->exec($drop_table);
 
-$query = 'CREATE TABLE national_parks (
+$create_table = 'CREATE TABLE national_parks (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(240) NOT NULL,
     location VARCHAR(50) NOT NULL,
@@ -21,4 +21,4 @@ $query = 'CREATE TABLE national_parks (
     PRIMARY KEY (id)
 )';
 
-$dbc->exec();
+$dbc->exec($create_table);
