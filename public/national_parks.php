@@ -5,6 +5,8 @@
 	require_once "../Input.php";
 
 	$page = Input::has('page') ? Input::get('page') : 1;
+	$page = is_numeric($page) ? $page : 1;
+	$page = $page > 0 ? $page : 1;
 	$offset = ($page - 1) * 2;
 	$selectAll = 'SELECT * FROM national_parks LIMIT 2 OFFSET ' . $offset;
 	$stmt = $dbc->query($selectAll);
