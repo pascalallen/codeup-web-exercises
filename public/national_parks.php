@@ -9,7 +9,6 @@
 	$selectAll = 'SELECT * FROM national_parks LIMIT 2 OFFSET ' . $offset;
 	$stmt = $dbc->query($selectAll);
 	$parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	$numPages = 5;
 ?>
 <!doctype html>
 <html>
@@ -50,12 +49,12 @@
 				</tbody>
 			<?php endforeach; ?>
 		</table>
-		<? if ($page == 0) : ? ?>
+		<?php if ($page != 1) : ?>
 			<a href="?page=<?= ($page - 1) ?>">Previous</a>
-		<? endif; ?>
-		<? if ($page < $numPages) : ?>
+		<?php endif; ?>
+		<?php if ($page != 5) : ?>
 			<a href="?page=<?= ($page + 1) ?>">Next</a>
-		<? endif; ?>
+		<?php endif; ?>
 	</div>
 </body>
 </html>
