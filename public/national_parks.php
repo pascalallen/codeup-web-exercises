@@ -4,9 +4,9 @@
 	require_once "../db_connect.php";
 	require_once "../Input.php";
 
-	$page = Input::has('page') ? Input::get('page') : 1;
-	$page = is_numeric($page) ? $page : 1;
-	$page = $page > 0 ? $page : 1;
+	$page = Input::has('page') ? Input::get('page') : 1; // grabs url value if exists, if not set to 1
+	$page = is_numeric($page) ? $page : 1; // is value numeric, if not set to 1
+	$page = $page > 0 ? $page : 1; // is value greater than zero, if not set to 1
 	$limit = 2;
 	$offset = $page * $limit - $limit;
 	$selectAll = 'SELECT * FROM national_parks LIMIT ' . $limit . ' OFFSET ' . $offset;
