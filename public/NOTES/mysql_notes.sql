@@ -298,7 +298,10 @@ foreach ($users as $user) {
     echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
 }
 
-
+-- FETCHING ROWS
+PDO::FETCH_ASSOC — returns an array indexed by column name as returned in your result set
+PDO::FETCH_NUM — returns an array indexed by column number as returned in your result set, starting at column 0
+PDO::FETCH_BOTH — (default) returns an array indexed by both column name and 0-indexed column number as returned in your result set
 
 
 
