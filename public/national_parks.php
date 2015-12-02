@@ -7,8 +7,9 @@
 	$page = Input::has('page') ? Input::get('page') : 1;
 	$page = is_numeric($page) ? $page : 1;
 	$page = $page > 0 ? $page : 1;
-	$offset = ($page - 1) * 2;
-	$selectAll = 'SELECT * FROM national_parks LIMIT 2 OFFSET ' . $offset;
+	$limit = 2;
+	$offset = $page * $limit - $limit;
+	$selectAll = 'SELECT * FROM national_parks LIMIT ' . $limit . ' OFFSET ' . $offset;
 	$stmt = $dbc->query($selectAll);
 	$parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
