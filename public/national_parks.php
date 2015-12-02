@@ -22,7 +22,7 @@
 	<!-- CUSTOM CSS -->
 	<link rel="stylesheet" type="text/css" href="css/national_parks.css">
 	<!-- TITLE IMG -->
-	<!-- <link rel="shortcut icon" href="img/mole.png"> -->
+	<link rel="shortcut icon" href="img/codeup-arrow.png">
 </head>
 <body>
 	<div class="container">
