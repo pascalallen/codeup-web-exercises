@@ -4,6 +4,28 @@
 	require_once "../db_connect.php";
 	require_once "../Input.php";
 
+	if (!empty($_POST)) {
+
+		$name = Input::has('name') ? Input::get('name') : null;
+		$location = Input::has('location') ? Input::get('location') : null;
+		$date_established = Input::has('date_established') ? Input::get('date_established') : null;
+		$area_in_acres = Input::has('area_in_acres') ? Input::get('area_in_acres') : null;
+		$description = Input::has('description') ? Input::get('description') : null;
+
+
+		$insert_table = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
+
+	    $stmt = $dbc->prepare($insert_table);
+	    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+	    $stmt->bindValue(':location', $location, PDO::PARAM_STR);
+	    $stmt->bindValue(':date_established', $date_established, PDO::PARAM_STR);
+	    $stmt->bindValue(':area_in_acres', $area_in_acres, PDO::PARAM_STR);
+	    $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+
+	    $stmt->execute();
+
+	}
+
 	// Count
 	$countAll = 'SELECT * FROM national_parks';
 	$count_stmt = $dbc->query($countAll);
@@ -22,6 +44,7 @@
 	$stmt = $dbc->prepare($selectAll);
 	$stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
 	$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+	$stmt->execute();
 	$parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!doctype html>
@@ -53,6 +76,7 @@
 					<th>Location</th>
 					<th>Established</th>
 					<th>Acres</th>
+					<th>Description</th>
 					</tr>
 			    </thead>
 				<?php foreach ($parks as $park) : ?>
@@ -62,6 +86,7 @@
 						    <td><?= $park['location'] ?> </td>
 						    <td><?= $park['date_established'] ?> </td>
 						    <td><?= $park['area_in_acres'] ?> </td>
+						    <td><?= $park['description'] ?> </td>
 						</tr>
 					</tbody>
 				<?php endforeach; ?>
@@ -69,9 +94,35 @@
 			<?php if ($page != 1) : ?>
 				<a href="?page=<?= ($page - 1) ?>">Previous</a>
 			<?php endif; ?>
-			<?php if ($page != 5) : ?>
+			<?php if ($page != $max_page) : ?>
 				<a href="?page=<?= ($page + 1) ?>">Next</a>
 			<?php endif; ?>
+
+			<h3>Submit a park:</h3>
+			<form role="form" method="POST">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+				</div>
+				<div class="form-group">
+					<label for="location">Location:</label>
+					<input type="text" class="form-control" name="location" id="location" placeholder="Enter location">
+				</div>
+				<div class="form-group">
+					<label for="date">Date Established:</label>
+					<input type="text" class="form-control" name="date_established" id="date" placeholder="Enter date established">
+				</div>
+				<div class="form-group">
+					<label for="acres">Acres:</label>
+					<input type="text" class="form-control" name="area_in_acres" id="acres" placeholder="Enter acres">
+				</div>
+				<div class="form-group">
+					<label for="description">Description:</label>
+					<input type="text" class="form-control" name="description" id="description" placeholder="Enter description">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+
 		</div>
 	</div>
 </body>

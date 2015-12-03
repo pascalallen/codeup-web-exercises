@@ -21,14 +21,14 @@ $nationalParks = [
 ];
 
 foreach ($nationalParks as $park) {
-    $create_table = "INSERT INTO national_parks (name, location, date_established, area_in_acres) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
+    $create_table = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
 
     $stmt = $dbc->prepare($create_table);
-    $stmt->bindValue(':name', $national_parks['name'], PDO::PARAM_STR);
-    $stmt->bindValue(':location', $national_parks['location'], PDO::PARAM_STR);
-    $stmt->bindValue(':date_established', $national_parks['date_established'], PDO::PARAM_STR);
-    $stmt->bindValue(':area_in_acres', $national_parks['area_in_acres'], PDO::PARAM_STR);
-    $stmt->bindValue(':description', $national_parks['description'], PDO::PARAM_STR);
+    $stmt->bindValue(':name', $park['name'], PDO::PARAM_STR);
+    $stmt->bindValue(':location', $park['location'], PDO::PARAM_STR);
+    $stmt->bindValue(':date_established', $park['date_established'], PDO::PARAM_STR);
+    $stmt->bindValue(':area_in_acres', $park['area_in_acres'], PDO::PARAM_STR);
+    $stmt->bindValue(':description', $park['description'], PDO::PARAM_STR);
 
-    $stmt->exec();
+    $stmt->execute();
 }
