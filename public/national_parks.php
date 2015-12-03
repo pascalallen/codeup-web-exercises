@@ -5,24 +5,40 @@
 	require_once "../Input.php";
 
 	if (!empty($_POST)) {
+		if (Input::setAndNotEmpty('name') &&
+			Input::setAndNotEmpty('location') &&
+			Input::setAndNotEmpty('date_established') &&
+			Input::setAndNotEmpty('area_in_acres') &&
+			Input::setAndNotEmpty('description')) {
 
-		$name = Input::has('name') ? Input::get('name') : null;
-		$location = Input::has('location') ? Input::get('location') : null;
-		$date_established = Input::has('date_established') ? Input::get('date_established') : null;
-		$area_in_acres = Input::has('area_in_acres') ? Input::get('area_in_acres') : null;
-		$description = Input::has('description') ? Input::get('description') : null;
+			$name = Input::has('name') ? Input::get('name') : null;
+			$location = Input::has('location') ? Input::get('location') : null;
+			$date_established = Input::has('date_established') ? Input::get('date_established') : null;
+			$area_in_acres = Input::has('area_in_acres') ? Input::get('area_in_acres') : null;
+			$description = Input::has('description') ? Input::get('description') : null;
 
 
-		$insert_table = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
+			$insert_table = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
 
-	    $stmt = $dbc->prepare($insert_table);
-	    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
-	    $stmt->bindValue(':location', $location, PDO::PARAM_STR);
-	    $stmt->bindValue(':date_established', $date_established, PDO::PARAM_STR);
-	    $stmt->bindValue(':area_in_acres', $area_in_acres, PDO::PARAM_STR);
-	    $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+		    $stmt = $dbc->prepare($insert_table);
+		    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+		    $stmt->bindValue(':location', $location, PDO::PARAM_STR);
+		    $stmt->bindValue(':date_established', $date_established, PDO::PARAM_STR);
+		    $stmt->bindValue(':area_in_acres', $area_in_acres, PDO::PARAM_STR);
+		    $stmt->bindValue(':description', $description, PDO::PARAM_STR);
 
-	    $stmt->execute();
+		    $stmt->execute();
+		} else if (Input::has('id')) {
+			$delete_column = "DELETE FROM national_parks WHERE id = :id";
+
+			$del = $dbc->prepare($delete_column);
+			$del->bindValue(':id', Input::get('id'), PDO::PARAM_STR);
+			
+			$del->execute();
+		}else {
+			$message = "Invalid format. Please try again.";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+		}
 
 	}
 
@@ -81,12 +97,19 @@
 			    </thead>
 				<?php foreach ($parks as $park) : ?>
 					<tbody>
-						<tr class="table-striped">
+						<tr class="table-bordered">
 						    <td><?= $park['name'] ?> </td>
 						    <td><?= $park['location'] ?> </td>
 						    <td><?= $park['date_established'] ?> </td>
 						    <td><?= $park['area_in_acres'] ?> </td>
 						    <td><?= $park['description'] ?> </td>
+						</tr>
+						<tr>
+							<td>
+								<form role="form" method="POST">
+									<button type="submit" class="btn btn-info btn-xs" value="<?= $park['id'] ?>" name="id">Delete</button>
+								</form>
+							</td>
 						</tr>
 					</tbody>
 				<?php endforeach; ?>
@@ -125,6 +148,11 @@
 
 		</div>
 	</div>
+	<!-- JQUERY -->
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<!-- CUSTOM JAVASCRIPT -->
+	<script src="js/national_parks.js"></script>
+</body>
 </body>
 </html>
 
