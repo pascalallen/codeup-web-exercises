@@ -18,8 +18,10 @@
 	$page = ($page <= $max_page) ? $page : $max_page; // is value less than or equal maximum amount of pages, if not set to max page
 
 	$offset = $page * $limit - $limit;
-	$selectAll = 'SELECT * FROM national_parks LIMIT ' . $limit . ' OFFSET ' . $offset;
-	$stmt = $dbc->query($selectAll);
+	$selectAll = 'SELECT * FROM national_parks LIMIT :limit OFFSET :offset';
+	$stmt = $dbc->prepare($selectAll);
+	$stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+	$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 	$parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!doctype html>
