@@ -4,10 +4,19 @@
 	require_once "../db_connect.php";
 	require_once "../Input.php";
 
-	$page = Input::has('page') ? Input::get('page') : 1; // grabs url value if exists, if not set to 1
-	$page = is_numeric($page) ? $page : 1; // is value numeric, if not set to 1
-	$page = $page > 0 ? $page : 1; // is value greater than zero, if not set to 1
+	// Count
+	$countAll = 'SELECT * FROM national_parks';
+	$count_stmt = $dbc->query($countAll);
+	$count = $count_stmt->rowCount();
 	$limit = 2;
+	$max_page = ceil($count / $limit);
+
+	// Sanitizing
+	$page = Input::has('page') ? Input::get('page') : 1; // grabs url value if exists, if not set to 1
+	$page = (is_numeric($page)) ? $page : 1; // is value numeric, if not set to 1
+	$page = ($page > 0) ? $page : 1; // is value greater than zero, if not set to 1
+	$page = ($page <= $max_page) ? $page : $max_page; // is value less than or equal maximum amount of pages, if not set to max page
+
 	$offset = $page * $limit - $limit;
 	$selectAll = 'SELECT * FROM national_parks LIMIT ' . $limit . ' OFFSET ' . $offset;
 	$stmt = $dbc->query($selectAll);
