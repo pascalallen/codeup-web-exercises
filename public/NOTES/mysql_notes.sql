@@ -298,12 +298,56 @@ foreach ($users as $user) {
     echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
 }
 
--- FETCHING ROWS
 PDO::FETCH_ASSOC — returns an array indexed by column name as returned in your result set
 PDO::FETCH_NUM — returns an array indexed by column number as returned in your result set, starting at column 0
 PDO::FETCH_BOTH — (default) returns an array indexed by both column name and 0-indexed column number as returned in your result set
 
+-- Question Mark Parameters
+$query = 'INSERT INTO users (email, name) VALUES (?, ?)';
 
+$stmt = $dbc->prepare($query);
+
+-- Binding Values Directly
+$query = 'INSERT INTO users (email, name) VALUES (?, ?)';
+
+$stmt = $dbc->prepare($query);
+
+$stmt->execute(array('ben@codeup.com', 'Ben Batschelet'));
+
+-- Named Parameters
+$query = 'INSERT INTO users (email, name) VALUES (:email, :name)';
+
+$stmt = $dbc->prepare($query);
+
+$stmt->execute(array(':email' => 'ben@codeup.com', ':name' => 'Ben Batschelet'));
+
+-- Using bindValue()
+$users = [
+    ['email' => 'jason@codeup.com',   'name' => 'Jason Straughan'],
+    ['email' => 'chris@codeup.com',   'name' => 'Chris Turner'],
+    ['email' => 'michael@codeup.com', 'name' => 'Michael Girdley']
+];
+
+$stmt = $dbc->prepare('INSERT INTO users (email, name) VALUES (:email, :name)');
+
+foreach ($users as $user) {
+    $stmt->bindValue(':email', $user['email'], PDO::PARAM_STR);
+    $stmt->bindValue(':name',  $user['name'],  PDO::PARAM_STR);
+
+    $stmt->execute();
+}
+-- ---------------------------------------------------------
+PDO::PARAM_BOOL — boolean data type
+PDO::PARAM_INT — integer data type
+PDO::PARAM_STR — string data type
+PDO::PARAM_NULL — null data type
+
+$stmt = $dbc->prepare('SELECT * FROM user WHERE id = :id');
+
+$stmt->bindValue(':id', 1, PDO::PARAM_INT);
+$stmt->execute();
+
+print_r($stmt->fetch(PDO::FETCH_ASSOC));
 
 
 
