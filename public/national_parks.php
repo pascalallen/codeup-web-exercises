@@ -17,7 +17,6 @@
 			$area_in_acres = Input::has('area_in_acres') ? Input::get('area_in_acres') : null;
 			$description = Input::has('description') ? Input::get('description') : null;
 
-
 			$insert_table = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
 
 		    $stmt = $dbc->prepare($insert_table);
