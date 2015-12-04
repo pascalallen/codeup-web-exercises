@@ -481,7 +481,46 @@ $john->worldPopulation = 7241000000;
 // (USE ONLY INSIDE OF METHODS)
 self::$population += 1;
 
+-- USING INHERITANCE
+-- **PARENT CLASS**
+class Person
+{
+    public $firstName;
+    public $lastName;
 
+    public function __construct($firstName, $lastName)
+    {
+        $this->firstName = $firstName;
+        $this->lastName  = $lastName;
+    }
+
+    public function fullName()
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+}
+-- **SUBCLASS**
+class Superhero extends Person
+{
+    public $pseudonym;
+    public $capeColor;
+
+    public function alterEgo()
+    {
+        return 'Top Secret Alternate Ego: ' . $this->fullName();
+    }
+
+    public function hasCape()
+    {
+        return !empty($this->capeColor);
+    }
+}
+$superman = new Superhero('Clark', 'Kent');
+$superman->pseudonym = 'Superman';
+$superman->capeColor = 'red';
+
+echo $superman->alterEgo();
+RESULT:  Top Secret Alternate Ego: Clark Kent
 
 
 
