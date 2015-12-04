@@ -15,7 +15,7 @@
 			$location = Input::has('location') ? Input::get('location') : null;
 			$date_established = Input::has('date_established') ? Input::get('date_established') : null;
 			$area_in_acres = Input::has('area_in_acres') ? Input::get('area_in_acres') : null;
-			$description = Input::has('description') ? Input::get('description') : null;
+			$description = Input::has('description') ? Input::get('description') : null; 
 
 			$insert_table = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
 
@@ -36,7 +36,8 @@
 			$del->execute();
 		}else {
 			$message = "Invalid format. Please try again.";
-			echo "<script type='text/javascript'>alert('$message');</script>";
+			$javascript = "<script type='text/javascript'>alert('$message');</script>";
+			echo $javascript;
 		}
 
 	}
