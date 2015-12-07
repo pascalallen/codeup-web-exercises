@@ -481,8 +481,8 @@ $john->worldPopulation = 7241000000;
 // (USE ONLY INSIDE OF METHODS)
 self::$population += 1;
 
--- USING INHERITANCE
--- **PARENT CLASS**
+// -- USING INHERITANCE
+// -- **PARENT CLASS**
 class Person
 {
     public $firstName;
@@ -499,7 +499,7 @@ class Person
         return $this->firstName . ' ' . $this->lastName;
     }
 }
--- **SUBCLASS**
+// -- **SUBCLASS**
 class Superhero extends Person
 {
     public $pseudonym;
@@ -521,6 +521,40 @@ $superman->capeColor = 'red';
 
 echo $superman->alterEgo();
 RESULT:  Top Secret Alternate Ego: Clark Kent
+
+// TYPES OF VISIBILITY
+public - accessible from everywhere.
+
+protected - accessible only within the defining class and by inherited classes.
+
+private - only accessible from within the class that defines the method or property.
+
+class Person
+{
+    protected $firstName;
+    protected $lastName;
+
+    public function __construct($firstName, $lastName)
+    {
+        $this->setFirstName($firstName);
+        $this->setLastName($lastName);
+    }
+
+    public function setFirstName($firstName)
+    {
+        $this->firstName = trim($firstName);
+    }
+
+    public function setLastName($lastName)
+    {
+        $this->lastName = trim($lastName);
+    }
+
+    public function fullName()
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+}
 
 
 
