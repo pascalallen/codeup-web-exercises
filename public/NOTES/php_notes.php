@@ -539,7 +539,7 @@ class Person
         $this->setFirstName($firstName);
         $this->setLastName($lastName);
     }
-
+    // *****EX. OF SETTER
     public function setFirstName($firstName)
     {
         $this->firstName = trim($firstName);
@@ -555,6 +555,7 @@ class Person
         return $this->firstName . ' ' . $this->lastName;
     }
 }
+
 
 
 
