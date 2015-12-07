@@ -3,6 +3,12 @@ class Model
 {
     // Array to store our key/value data
     private $attributes = [];
+    protected static $table;
+
+    public static function getTableName()
+    {
+    	return static::$table;
+    }
 
     // Magic setter to populate $data array
     public function __set($name, $value)
@@ -28,3 +34,7 @@ echo $model->name = "Pascal";
 echo PHP_EOL;
 echo $model->age = 27;
 echo PHP_EOL;
+
+
+
+

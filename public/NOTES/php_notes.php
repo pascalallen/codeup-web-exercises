@@ -581,9 +581,18 @@ class Datastore
     }
 }
 
+// LATE STATIC BINDING
+class Father
+{
+    protected static $name = 'Darth Vader';
 
+    public static function getName() 
+    {
+        return self::$name; //RETURNS PARENT PROPERTY
+    }
+}
 
-
+    
 
 
 
