@@ -593,10 +593,15 @@ class Father
 }
 
     
-
-
-
-
-
+#Create Migration
+- db: phonebook_db
+- table: contacts
+    - id
+    - email
+    - name
+    - address
+    - city
+    - state
+    - zip
 
 
