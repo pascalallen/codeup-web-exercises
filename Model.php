@@ -1,5 +1,4 @@
 <?php
-require_once "Input.php";
 class Model
 {
     protected static $dbc;
@@ -24,8 +23,17 @@ class Model
         if (!self::$dbc)
         {
             // @TODO: Connect to database
+            require_once "users_logins.php";
             require_once "db_connect.php";
+            self::$dbc = $dbc;
         }
+    }
+
+    // Magic setter to populate $contacts array
+    public function __set($name, $value)
+    {
+        // Set the $name key to hold $value in $data
+        $this->attributes[$name] = $value;
     }
 
     // Magic getter to retrieve values from $data
@@ -39,33 +47,18 @@ class Model
         return null;
     }
 
-    // Magic setter to populate $contacts array
-    public function __set($name, $value)
-    {
-        // Set the $name key to hold $value in $data
-        $this->attributes[$name] = $value;
-    }
-
     public function save()
     {
-    	// $this->attributes['id'];
     	if (!empty($this->attributes))
     	{
-    		$insert_table .= "INSERT INTO " . self::$table . " (";
-
-    		implode()
-
-    		foreach($this->attributes as $attribute)
+    		// BUILD QUERY AND RUN
+    		if(isset($this->attributes['id']))
     		{
-
+    			$this->update($this->attributes['id']);
+    		} else
+    		{
+    			$this->insert();
     		}
-
-    		$insert_table .= ') VAlUES ('
-
-
-    			email, name, phone, address, city, state, zip) VALUES (:email, :name, :phone, :address, :city, :state, :zip)";
-
-
 
    //  		if (Input::setAndNotEmpty('email') &&
 			// 	Input::setAndNotEmpty('name') &&
@@ -127,6 +120,31 @@ class Model
     	}
     }
 
+    protected function insert()
+    {
+        $newKeysArray = [];
+        $keysArray = array_keys($this->attributes);
+        
+		$insert_table = "INSERT INTO " . self::$table . " (";
+		$insert_table .= implode(', ', $keysArray);
+		$insert_table .= ") VALUES (";
+        foreach ($keysArray as $key) { $newKeysArray[] = ':'.$key; }
+		$insert_table .= implode(', ', $newKeysArray);
+		$insert_table .= ");";
+
+		$stmt = $dbc->prepare($insert_table);
+
+        foreach ($this->attributes as $key => $value) { $stmt->bindValue(':' . $key, $value, PDO::PARAM_STR); }
+		
+		$stmt->execute();
+
+    }
+
+    protected function update($id)
+    {
+
+    }
+
     /*
      * Find a record based on an id
      */
@@ -134,11 +152,13 @@ class Model
     {
         // Get connection to the database
         self::dbConnect();
-
+        $table = static::$table;
         // @TODO: Create select statement using prepared statements
-        $stmt = $dbh->prepare("SELECT * FROM contacts (name, value) VALUES (:name, :value)");
+        $query = "SELECT * FROM $table WHERE id = :id";
         // @TODO: Store the resultset in a variable named $result
+        $stmt = self::$dbc->prepare($query);
 
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         // The following code will set the attributes on the calling object based on the result variable's contents
 
         $instance = null;
@@ -149,6 +169,7 @@ class Model
         }
         return $instance;
     }
+
     public static function getTableName()
     {
     	return static::$table;
@@ -160,8 +181,17 @@ class Model
     public static function all()
     {
         self::dbConnect();
-
+        $table = self::$table;
+        $query = "SELECT * FROM $table";
+        $stmt = self::$dbc->query($query);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         // @TODO: Learning from the previous method, return all the matching records
+        return $results;
+    }
+
+    public function getAttributes()
+    {
+    	return $this->attributes;
     }
 
 }
