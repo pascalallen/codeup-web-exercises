@@ -9,7 +9,8 @@ $contact->address = '168 Foxglove Pass';
 $contact->city = 'Cibolo';
 $contact->state = 'TX';
 $contact->zip = '78108';
-// $contact->save();
+$contact->save();
+
 
 // $user = User::find(1);
 
@@ -22,5 +23,5 @@ $contact->zip = '78108';
 // $user->name = 'Pascal';
 // $user->save();
 
-$test = $contact->find();
-var_dump($test);
+// $test = $contact->;
+// var_dump($test);
