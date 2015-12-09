@@ -1,4 +1,5 @@
 <?php
+require_once "users_logins.php";
 class Model
 {
     protected static $dbc;
@@ -23,8 +24,7 @@ class Model
         if (!self::$dbc)
         {
             // @TODO: Connect to database
-            require_once "users_logins.php";
-            require_once "db_connect.php";
+            require "db_connect.php";
             self::$dbc = $dbc;
         }
     }
