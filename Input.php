@@ -62,10 +62,10 @@ class Input
     {
         $value = trim(self::get($key));
         $date = new DateTime($value);
-        if(!$date)
-        {
-            throw new Exception("{$key} must be a date!");
-        }
+        // if(!$date)
+        // {
+        //     throw new Exception("{$key} must be a date!");
+        // }
         return $value;
     }
 
