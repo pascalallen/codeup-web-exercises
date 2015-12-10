@@ -38,6 +38,33 @@ class Input
         return $default;
     }
 
+    public static function getString($key)
+    {
+        if(!is_string(self::get($key)))
+        {
+            throw new Exception("{$key} must be a string!");
+        }
+        return $_REQUEST[$key];
+    }
+
+    public static function getNumber($key)
+    {
+        if(!is_int(self::get($key)))
+        {
+            throw new Exception("{$key} must be a number!");
+        }
+        return $_REQUEST[$key];
+    }
+
+    public static function getDate($key)
+    {
+        if(!is_int(self::get($key)))
+        {
+            throw new Exception("{$key} must be a date!");
+        }
+        return $_REQUEST[$key];
+    }
+
     ///////////////////////////////////////////////////////////////////////////
     //                      DO NOT EDIT ANYTHING BELOW!!                     //
     // The Input class should not ever be instantiated, so we prevent the    //
