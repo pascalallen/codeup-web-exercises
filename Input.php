@@ -40,29 +40,32 @@ class Input
 
     public static function getString($key)
     {
-        if(!is_string(self::get($key)))
+        $value = trim(self::get($key));
+        if(!is_string($value))
         {
             throw new Exception("{$key} must be a string!");
         }
-        return $_REQUEST[$key];
+        return $value;
     }
 
     public static function getNumber($key)
     {
-        if(!is_int(self::get($key)))
+        $value = trim(self::get($key));
+        if(!is_numeric($value))
         {
             throw new Exception("{$key} must be a number!");
         }
-        return $_REQUEST[$key];
+        return $value;
     }
 
     public static function getDate($key)
     {
-        if(!is_int(self::get($key)))
+        $value = trim(self::get($key));
+        if(!date_parse($value))
         {
             throw new Exception("{$key} must be a date!");
         }
-        return $_REQUEST[$key];
+        return $value;
     }
 
     ///////////////////////////////////////////////////////////////////////////

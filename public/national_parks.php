@@ -11,11 +11,11 @@
 			Input::setAndNotEmpty('area_in_acres') &&
 			Input::setAndNotEmpty('description')) {
 
-			$name = Input::has('name') ? Input::get('name') : null;
-			$location = Input::has('location') ? Input::get('location') : null;
-			$date_established = Input::has('date_established') ? Input::get('date_established') : null;
-			$area_in_acres = Input::has('area_in_acres') ? Input::get('area_in_acres') : null;
-			$description = Input::has('description') ? Input::get('description') : null; 
+			$name = Input::has('name') ? Input::getString('name') : null;
+			$location = Input::has('location') ? Input::getString('location') : null;
+			$date_established = Input::has('date_established') ? Input::getDate('date_established') : null;
+			$area_in_acres = Input::has('area_in_acres') ? Input::getNumber('area_in_acres') : null;
+			$description = Input::has('description') ? Input::getString('description') : null; 
 
 			$insert_table = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
 
