@@ -61,7 +61,8 @@ class Input
     public static function getDate($key)
     {
         $value = trim(self::get($key));
-        if(!date_parse($value))
+        $date = new DateTime($value);
+        if(!$date)
         {
             throw new Exception("{$key} must be a date!");
         }
