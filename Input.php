@@ -40,34 +40,37 @@ class Input
 
     public static function getString($key, $min = 1, $max = 240)
     {
+        $key = ucfirst($key);
+        $key = str_replace('_', ' ', $key);
         $value = trim(self::get($key));
         if(!is_string($value) || !is_numeric($min) && !is_numeric($max))
         {
-            $key = ucfirst($key);
-            $key = str_replace('_', ' ', $key);
-            throw new InvalidArgumentException("{$key} must be a string!");
-        } else if (!self::setAndNotEmpty($key)) {
-            throw new OutOfRangeException("{$key} must not be empty!");
-        } else if (!is_string($key)) {
-            throw new DomainException("{$key} must be a string type!");
-        } else if (strlen($key) < $min || strlen($key) > $max) {
-            throw new LengthException("{$key} must be within 1 to 240 characters long!");
+            throw new InvalidArgumentException("{$value} must be a string!");
+        } else if (!self::setAndNotEmpty($value)) {
+            throw new OutOfRangeException("{$value} must not be empty!");
+        } else if (!is_string($value)) {
+            throw new DomainException("{$value} must be a string type!");
+        } else if (strlen($value) < $min || strlen($value) > $max) {
+            throw new LengthException("{$value} must be within {$min} to {$max} characters long!");
         }
         return $value;
     }
 
     public static function getNumber($key, $min = 1, $max = 8)
     {
+        $key = ucfirst($key);
+        $key = str_replace('_', ' ', $key);
         $value = trim(self::get($key));
         if(!is_numeric($value))
         {
-            $key = ucfirst($key);
-            $key = str_replace('_', ' ', $key);
-            throw new Exception("{$key} must be a number!");
-        } else if (!self::setAndNotEmpty($key)) {
-            throw new OutOfRangeException("{$key} must not be empty!");
-        } else if ($key < $min || $key > $max) {
-            throw new RangeException("{$key} must be between 1 and 8 numbers long!");
+            throw new InvalidArgumentException("{$value} must be a number!");
+        } else if (!self::setAndNotEmpty($value)) {
+            throw new OutOfRangeException("{$value} must not be empty!");
+        } else if (!is_numeric($value)) {
+            throw new DomainException("{$value} must be a number!");
+        }
+        else if ($value < $min || $value > $max) {
+            throw new RangeException("{$value} must be between 1 and 8 numbers long!");
         }
         return $value;
     }
