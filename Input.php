@@ -43,6 +43,8 @@ class Input
         $value = trim(self::get($key));
         if(!is_string($value))
         {
+            $key = ucfirst($key);
+            $key = str_replace('_', ' ', $key);
             throw new Exception("{$key} must be a string!");
         }
         return $value;
@@ -53,6 +55,8 @@ class Input
         $value = trim(self::get($key));
         if(!is_numeric($value))
         {
+            $key = ucfirst($key);
+            $key = str_replace('_', ' ', $key);
             throw new Exception("{$key} must be a number!");
         }
         return $value;
@@ -61,12 +65,19 @@ class Input
     public static function getDate($key)
     {
         $value = trim(self::get($key));
-        $date = new DateTime($value);
-        // if(!$date)
-        // {
-        //     throw new Exception("{$key} must be a date!");
-        // }
+        try{
+            $date = new DateTime($value);
+        } catch (Exception $e) {
+            $key = ucfirst($key);
+            $key = str_replace('_', ' ', $key);
+            throw new Exception("{$key} must be a valid date in the format of yyyy-mm-dd!");
+        }
         return $value;
+    }
+
+    public static function escape($key)
+    {
+        return htmlspecialchars(strip_tags($key));
     }
 
     ///////////////////////////////////////////////////////////////////////////
