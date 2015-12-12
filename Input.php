@@ -45,32 +45,32 @@ class Input
         $value = trim(self::get($key));
         if(!is_string($value) || !is_numeric($min) && !is_numeric($max))
         {
-            throw new InvalidArgumentException("{$value} must be a string!");
+            throw new InvalidArgumentException("{$key} must be a string!");
         } else if (!self::setAndNotEmpty($value)) {
-            throw new OutOfRangeException("{$value} must not be empty!");
+            throw new OutOfRangeException("{$key} must not be empty!");
         } else if (!is_string($value)) {
-            throw new DomainException("{$value} must be a string type!");
+            throw new DomainException("{$key} must be a string type!");
         } else if (strlen($value) < $min || strlen($value) > $max) {
-            throw new LengthException("{$value} must be within {$min} to {$max} characters long!");
+            throw new LengthException("{$key} must be within {$min} to {$max} characters long!");
         }
         return $value;
     }
 
-    public static function getNumber($key, $min = 1, $max = 8)
+    public static function getNumber($key, $min = 1, $max = 99999999999)
     {
         $key = ucfirst($key);
         $key = str_replace('_', ' ', $key);
         $value = trim(self::get($key));
-        if(!is_numeric($value))
+        if(!is_numeric($value) || !is_numeric($min) && !is_numeric($max))
         {
-            throw new InvalidArgumentException("{$value} must be a number!");
+            throw new InvalidArgumentException("{$key} must be between {$min} and {$max}!");
         } else if (!self::setAndNotEmpty($value)) {
-            throw new OutOfRangeException("{$value} must not be empty!");
+            throw new OutOfRangeException("{$key} must not be empty!");
         } else if (!is_numeric($value)) {
-            throw new DomainException("{$value} must be a number!");
+            throw new DomainException("{$key} must be a number!");
         }
         else if ($value < $min || $value > $max) {
-            throw new RangeException("{$value} must be between 1 and 8 numbers long!");
+            throw new RangeException("{$key} must be between 1 and 8 numbers long!");
         }
         return $value;
     }
