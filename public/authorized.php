@@ -1,9 +1,8 @@
 <?php
 require_once "../Auth.php";
-require_once "../Log.php";
 session_start();
     if(!Auth::check()) {
-        header('Location: login.php');
+        header('Location: /ads.index.php');
         die();
     }
     $name = Auth::user();
