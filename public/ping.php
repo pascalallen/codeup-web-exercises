@@ -1,6 +1,7 @@
 <?php
 require_once 'functions.php';
 require_once "../Input.php";
+
 function pageController()
 {
 	$counter = Input::has('counter') ? Input::get('counter') : 0;

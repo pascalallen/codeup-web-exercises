@@ -4,11 +4,9 @@
 		private $handle;
 	    private $filename;
 
-
 		public function __construct($prefix = "log"){
-		    $this->filename = $prefix . date("Y-m-d h:i:s ") . ".log";
+		    $this->filename = $prefix . date("Y-m-d h:i:s") . ".log";
 			$this->handle = fopen($this->filename, 'a');
-
 		}
 
 	    private function setFilename($filename)

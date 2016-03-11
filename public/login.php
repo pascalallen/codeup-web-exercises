@@ -1,14 +1,13 @@
 <?php
-require_once 'functions.php';
 require_once "../Auth.php";
-require_once "../Log.php";
+require_once "../Input.php";
 var_dump($_REQUEST);
 function pageController()
 {
     session_start();
 	$sessionId = session_id();
-	$name = inputHas('name') ? inputGet('name') : "";
-	$password = inputHas('password') ? inputGet('password') : "";
+	$name = Input::has('name') ? Input::get('name') : "";
+	$password = Input::has('password') ? Input::get('password') : "";
 	$javascript = '';
     $viewCount = isset($_SESSION['view_count']) ? $_SESSION['view_count'] : 0;
     $viewCount++; 
