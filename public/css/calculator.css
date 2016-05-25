@@ -116,7 +116,7 @@ html {
 	color: #006600;
 }
 
-.keys span:active {
+/*.keys span:active {
 	box-shadow: 0px 0px #6b54d3;
 	top: 4px;
 }
@@ -129,4 +129,4 @@ html {
 .top span.clear:active {
 	top: 4px;
 	box-shadow: 0px 0px #d3545d;
-}
+}*/

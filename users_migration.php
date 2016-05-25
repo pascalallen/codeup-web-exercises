@@ -11,7 +11,7 @@ $dbc->exec($drop_table);
 $create_table = 'CREATE TABLE contacts (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     email VARCHAR(50) NOT NULL UNIQUE,
-    name VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,
     phone VARCHAR(50) NOT NULL,
     address VARCHAR(50) NOT NULL,
     city VARCHAR(50) NOT NULL,

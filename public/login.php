@@ -1,6 +1,8 @@
 <?php
 require_once "../Auth.php";
 require_once "../Input.php";
+require_once "../Log.php";
+
 var_dump($_REQUEST);
 function pageController()
 {
@@ -14,6 +16,8 @@ function pageController()
     $_SESSION['view_count'] = $viewCount;
 
 	if(Auth::attempt($name, $password)){
+        $logger = new Log();
+        $logger->logInfo('hello');
         header('Location: authorized.php');
         die();
     }else if ($name != "" || $password != ""){
@@ -39,9 +43,9 @@ extract(pageController());
     View Count: <?= $viewCount; ?>
     <form method="POST">
         <label>Name</label>
-        <input value ="<?= escape($name) ?>"type="text" name="name"><br>
+        <input value ="<?= Input::escape($name) ?>"type="text" name="name"><br>
         <label>Password</label>
-        <input value ="<?= escape($password) ?>"type="password" name="password"><br>
+        <input value ="<?= Input::escape($password) ?>"type="password" name="password"><br>
         <input type="submit">
         <input type="hidden" name="reset" value="reset">
     </form>
