@@ -25,6 +25,7 @@
 		}
 		try{
 			$date_established = Input::has('date_established') ? Input::getDate('date_established') : null;
+			$date_established = $date_established->format("Y-m-d");
 		} catch (Exception $e) {
 			array_push($errors, $e->getMessage());
 		}

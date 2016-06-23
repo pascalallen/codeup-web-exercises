@@ -40,57 +40,79 @@ class Input
 
     public static function getString($key, $min = 1, $max = 240)
     {
-        $key = ucfirst($key);
-        $key = str_replace('_', ' ', $key);
         $value = trim(self::get($key));
-        if(!is_string($value) || !is_numeric($min) && !is_numeric($max))
-        {
-            throw new InvalidArgumentException("{$key} must be a string!");
-        } else if (!self::setAndNotEmpty($value)) {
-            throw new OutOfRangeException("{$key} must not be empty!");
-        } else if (!is_string($value)) {
-            throw new DomainException("{$key} must be a string type!");
-        } else if (strlen($value) < $min || strlen($value) > $max) {
-            throw new LengthException("{$key} must be within {$min} to {$max} characters long!");
+
+        if (!self::setAndNotEmpty($key)) {
+            throw new OutOfRangeException(self::formatKey($key) . " must not be empty!");
         }
+
+        if (!is_string($value)) {
+            throw new DomainException(self::formatKey($key) . " must be a string type!");
+        } 
+
+        if(!is_string($value) || !is_numeric($min) && !is_numeric($max)) {
+            throw new InvalidArgumentException(self::formatKey($key) . " must be a string!");
+        } 
+
+        if (strlen($value) < $min || strlen($value) > $max) {
+            throw new LengthException(self::formatKey($key) . " must be within {$min} to {$max} characters long!");
+        }
+
         return $value;
     }
 
     public static function getNumber($key, $min = 1, $max = 99999999999)
     {
-        $key = ucfirst($key);
-        $key = str_replace('_', ' ', $key);
         $value = trim(self::get($key));
-        if(!is_numeric($value) || !is_numeric($min) && !is_numeric($max))
-        {
-            throw new InvalidArgumentException("{$key} must be between {$min} and {$max}!");
-        } else if (!self::setAndNotEmpty($value)) {
-            throw new OutOfRangeException("{$key} must not be empty!");
+
+        if (!self::setAndNotEmpty($key)) {
+            throw new OutOfRangeException(self::formatKey($key) . " must not be empty!");
         } else if (!is_numeric($value)) {
-            throw new DomainException("{$key} must be a number!");
+            throw new DomainException(self::formatKey($key) . " must be a number!");
+        } else if(!is_numeric($value) || $value < 0 || !is_numeric($min) && !is_numeric($max)) {
+            throw new InvalidArgumentException(self::formatKey($key) . " must be between {$min} and {$max}!");
+        } else if ($value < $min || $value > $max) {
+            throw new RangeException(self::formatKey($key) . " must be between 1 and 8 numbers long!");
         }
-        else if ($value < $min || $value > $max) {
-            throw new RangeException("{$key} must be between 1 and 8 numbers long!");
-        }
+
         return $value;
     }
 
-    public static function getDate($key)
+    public static function getDate($key, $min = '1776-07-04', $max = 'next month')
     {
-        $value = trim(self::get($key));
+        $value = self::get($key);
+        $min = new DateTime($min);
+        $max = new DateTime($max);
+
         try{
             $date = new DateTime($value);
+
+            if ($date < $min) {
+                throw new DateRangeException(self::formatKey($key) .' too far in the past.');
+            }
+
+            if ($date > $max) {
+                throw new DateRangeException(self::formatKey($key) . ' too far in the future.');
+            }
+
+            return $date;
+        } catch (DateRangeException $e) {
+            throw new Exception($e->getMessage());
         } catch (Exception $e) {
-            $key = ucfirst($key);
-            $key = str_replace('_', ' ', $key);
-            throw new Exception("{$key} must be a valid date in the format of yyyy-mm-dd!");
+            throw new Exception(self::formatKey($key) . ' must be a valid date!');
         }
-        return $value;
     }
 
     public static function escape($key)
     {
         return htmlspecialchars(strip_tags($key));
+    }
+
+    public static function formatKey($key)
+    {
+        $key = ucfirst($key);
+        $key = str_replace('_', ' ', $key);
+        return $key;
     }
 
     ///////////////////////////////////////////////////////////////////////////
