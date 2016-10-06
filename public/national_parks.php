@@ -140,71 +140,78 @@
 			<!-- <h1><?= $page; ?></h1> -->
 			<h2>National Parks</h2>
 			<!-- <h3>Database Driven Web Application</h3> -->
-			<table class="table">
-				<thead>
-					<tr>
-					<th>Name</th>
-					<th>Location</th>
-					<th>Established</th>
-					<th>Acres</th>
-					<th>Description</th>
-					<th></th>
-					</tr>
-			    </thead>
-				<?php foreach ($parks as $park) : ?>
-					<tbody>
-						<tr class="table-bordered">
-						    <td><?= Input::escape($park['name']) ?> </td>
-						    <td><?= Input::escape($park['location']) ?> </td>
-						    <td><?= Input::escape($park['date_established']) ?> </td>
-						    <td><?= Input::escape($park['area_in_acres']) ?> </td>
-						    <td><?= Input::escape($park['description']) ?> </td>
-						    <td>
-					    		<form role="form" method="POST">
-									<button type="submit" class="btn btn-info btn-xs" value="<?= $park['id'] ?>" name="id">Delete</button>
-								</form>
-							</td>
-						</tr>
-					</tbody>
-				<?php endforeach; ?>
-			</table>
-			<?php if ($page != 1) : ?>
-				<a href="?page=<?= ($page - 1) ?>">Previous</a>
-			<?php endif; ?>
-			<?php if ($page != $max_page) : ?>
-				<a href="?page=<?= ($page + 1) ?>">Next</a>
-			<?php endif; ?>
+			<div class="row">
+				<div class="col-xs-8 col-xs-offset-2">
+					<table class="table">
+						<thead>
+							<tr>
+							<th>Name</th>
+							<th>Location</th>
+							<th>Established</th>
+							<th>Acres</th>
+							<th>Description</th>
+							<th></th>
+							</tr>
+					    </thead>
+						<?php foreach ($parks as $park) : ?>
+							<tbody>
+								<tr class="table-bordered">
+								    <td><?= Input::escape($park['name']) ?> </td>
+								    <td><?= Input::escape($park['location']) ?> </td>
+								    <td><?= Input::escape($park['date_established']) ?> </td>
+								    <td><?= Input::escape($park['area_in_acres']) ?> </td>
+								    <td><?= Input::escape($park['description']) ?> </td>
+								    <td>
+							    		<form role="form" method="POST">
+											<button type="submit" class="btn btn-info btn-xs" value="<?= $park['id'] ?>" name="id">Delete</button>
+										</form>
+									</td>
+								</tr>
+							</tbody>
+						<?php endforeach; ?>
+					</table>
+					<?php if ($page != 1) : ?>
+						<a href="?page=<?= ($page - 1) ?>">Previous</a>
+					<?php endif; ?>
+					<?php if ($page != $max_page) : ?>
+						<a href="?page=<?= ($page + 1) ?>">Next</a>
+					<?php endif; ?>
+				</div>
+			</div>
 
-			<h3>Submit a park:</h3>
-			<?php if(!empty($errors)) : ?>
-				<?php foreach($errors as $error) : ?>
-					<h5> <?= $error ?> </h5>
-				<?php endforeach ?>
-			<?php endif ?>
-			<form role="form" method="POST">
-				<div class="form-group">
-					<label for="name">Name:</label>
-					<input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+			<div class="row">
+				<h3 class="col-xs-4 col-xs-offset-4">Submit a park:</h3>
+				<div class="col-xs-4 col-xs-offset-4">
+					<?php if(!empty($errors)) : ?>
+						<?php foreach($errors as $error) : ?>
+							<h5> <?= $error ?> </h5>
+						<?php endforeach ?>
+					<?php endif ?>
+					<form role="form" method="POST">
+						<div class="form-group">
+							<label for="name">Name:</label>
+							<input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+						</div>
+						<div class="form-group">
+							<label for="location">Location:</label>
+							<input type="text" class="form-control" name="location" id="location" placeholder="Enter location">
+						</div>
+						<div class="form-group">
+							<label for="date">Date Established:</label>
+							<input type="text" class="form-control" name="date_established" id="date" placeholder="Enter date established">
+						</div>
+						<div class="form-group">
+							<label for="acres">Acres:</label>
+							<input type="text" class="form-control" name="area_in_acres" id="acres" placeholder="Enter acres">
+						</div>
+						<div class="form-group">
+							<label for="description">Description:</label>
+							<input type="text" class="form-control" name="description" id="description" placeholder="Enter description">
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
 				</div>
-				<div class="form-group">
-					<label for="location">Location:</label>
-					<input type="text" class="form-control" name="location" id="location" placeholder="Enter location">
-				</div>
-				<div class="form-group">
-					<label for="date">Date Established:</label>
-					<input type="text" class="form-control" name="date_established" id="date" placeholder="Enter date established">
-				</div>
-				<div class="form-group">
-					<label for="acres">Acres:</label>
-					<input type="text" class="form-control" name="area_in_acres" id="acres" placeholder="Enter acres">
-				</div>
-				<div class="form-group">
-					<label for="description">Description:</label>
-					<input type="text" class="form-control" name="description" id="description" placeholder="Enter description">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>
-
+			</div>
 		</div>
 	</div>
 		<!-- JQUERY -->
